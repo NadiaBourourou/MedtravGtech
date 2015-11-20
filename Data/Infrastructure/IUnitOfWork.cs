@@ -13,6 +13,8 @@ namespace  Data.Interfaces
 
 
         IHotelRepository HotelRepository { get; }
-        
+
+        IUserRepository UserRepository { get; }
+
     }
 }

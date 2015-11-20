@@ -40,9 +40,13 @@ namespace  Data.Infrastructure
             get { return hotelRepository = new HotelRepository(dbFactory); ; }
         }
 
-         
+        private IUserRepository userRepository;
+        public IUserRepository UserRepository
+        {
+            get { return userRepository = new UserRepository(dbFactory); ; }
+        }
 
-        
+
         public void Dispose()
         {
             DataContext.Dispose();
