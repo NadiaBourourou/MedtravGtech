@@ -12,7 +12,7 @@ namespace  Data.Interfaces
         void Commit();
 
 
-        IHotelRepository HotelRepository { get; }
+        IHotelRepository AuteurRepository { get; }
         
     }
 }
