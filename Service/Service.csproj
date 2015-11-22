@@ -43,6 +43,7 @@
     <Compile Include="FlightService.cs" />
     <Compile Include="HotelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestimonyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
