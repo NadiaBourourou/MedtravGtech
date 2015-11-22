@@ -11,6 +11,7 @@ namespace GUI.Controllers
     public class TestimonyController : Controller
     {
         ITestimonyService testimonyService;
+        int userId=1;
 
         public TestimonyController(ITestimonyService testimonyService)
         {
@@ -28,7 +29,8 @@ namespace GUI.Controllers
         // GET: Testimony/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            t_testimony testimony = testimonyService.GetById(id);
+            return View(testimony);
         }
 
         // GET: Testimony/Create
@@ -45,6 +47,9 @@ namespace GUI.Controllers
 
             if (ModelState.IsValid)
             {
+                t.date = DateTime.Now;
+                t.patient_userId =userId;
+
                 testimonyService.AddTestimony(t);
                 return RedirectToAction("Index");
             }
@@ -57,17 +62,20 @@ namespace GUI.Controllers
         // GET: Testimony/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            t_testimony testimony = testimonyService.GetById(id);
+            return View(testimony);
         }
 
         // POST: Testimony/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+
             try
             {
-                // TODO: Add update logic here
-
+                t_testimony testimony = testimonyService.GetById(id);
+                testimonyService.UpdateTestimony(testimony);
+            
                 return RedirectToAction("Index");
             }
             catch
@@ -77,18 +85,25 @@ namespace GUI.Controllers
         }
 
         // GET: Testimony/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(bool? saveChangesError = false, int id=0)
         {
-            return View();
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Please try again.";
+            }
+
+            t_testimony testimony = testimonyService.GetById(id);
+            return View(testimony);
         }
 
         // POST: Testimony/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                t_testimony testimony = testimonyService.GetById(id);
+                testimonyService.DeleteTestimony(testimony);
 
                 return RedirectToAction("Index");
             }

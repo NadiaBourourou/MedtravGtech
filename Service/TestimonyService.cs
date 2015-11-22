@@ -25,12 +25,36 @@ namespace Service
         {
             return utwk.TestimonyRepository.GetAll().ToList();
         }
+
+        public void DeleteTestimony(t_testimony a)
+        {
+
+            utwk.TestimonyRepository.Delete(a);
+            utwk.Commit();
+        }
+        public void UpdateTestimony(t_testimony a)
+        {
+           
+            utwk.TestimonyRepository.Update(a);
+            utwk.Commit();
+
+        }
+
+        public t_testimony GetById(long id)
+        {
+            
+            return utwk.TestimonyRepository.GetById(id);
+        }
+
     }
 
     public interface ITestimonyService
     {
         void AddTestimony(t_testimony f);
         List<t_testimony> getAllTestimonies();
+        void DeleteTestimony(t_testimony a);
+        void UpdateTestimony(t_testimony a);
+        t_testimony GetById(long id);
     }
 
 
