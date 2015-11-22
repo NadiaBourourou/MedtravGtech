@@ -15,6 +15,10 @@ namespace Data.Models
         public medtravdbContext()
             : base("Name=medtravdbContext")
         {
+
+            var adapter = (IObjectContextAdapter)this;
+            var objectContext = adapter.ObjectContext;
+            objectContext.CommandTimeout = 1 * 60;
         }
 
         public DbSet<t_booking> t_booking { get; set; }

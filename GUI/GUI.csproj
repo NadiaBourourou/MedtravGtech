@@ -285,6 +285,10 @@
     <Content Include="Views\Flight\Create.cshtml" />
     <Content Include="Views\Testimony\Index.cshtml" />
     <Content Include="Views\Testimony\Create.cshtml" />
+	<Content Include="Views\Hotel\Index.cshtml" />
+    <Content Include="Views\Hotel\CreateHotel.cshtml" />
+    <Content Include="Views\Hotel\EditHotel.cshtml" />
+    <Content Include="Views\Hotel\DeleteHotel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

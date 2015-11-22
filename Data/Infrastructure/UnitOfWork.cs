@@ -26,6 +26,11 @@ namespace  Data.Infrastructure
         {
             this.dbFactory = dbFactory;
         }
+
+        public UnitOfWork()
+        {
+        }
+
         public void Commit()
         {
             DataContext.SaveChanges();
