@@ -37,7 +37,7 @@ namespace  Data.Infrastructure
         }
 
 
-     
+
 
         private IHotelRepository hotelRepository;
         public IHotelRepository HotelRepository
@@ -49,6 +49,19 @@ namespace  Data.Infrastructure
         public IUserRepository UserRepository
         {
             get { return userRepository = new UserRepository(dbFactory); ; }
+        }
+
+
+        private IFlightRepository flightRepository;
+        public IFlightRepository FlightRepository
+        {
+            get { return flightRepository = new FlightRepository(dbFactory); ; }
+        }
+
+        private IFlightMatchingRepository flightMatchingRepository;
+        public IFlightMatchingRepository FlightMatchingRepository
+        {
+            get { return flightMatchingRepository = new FlightMatchingRepository(dbFactory); ; }
         }
 
 

@@ -16,5 +16,8 @@ namespace  Data.Interfaces
 
         IUserRepository UserRepository { get; }
 
+        IFlightRepository FlightRepository { get; }
+
+        IFlightMatchingRepository FlightMatchingRepository { get; }
     }
 }
