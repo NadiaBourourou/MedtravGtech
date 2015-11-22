@@ -1,0 +1,96 @@
+﻿@model Data.Models.t_hotel
+
+@{
+    ViewBag.Title = "DeleteHotel";
+}
+
+<h2>DeleteHotel</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>t_hotel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hotelId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hotelId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priceSingle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priceSingle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priceSuite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priceSuite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImgName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImgName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
