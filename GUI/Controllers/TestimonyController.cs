@@ -32,6 +32,13 @@ namespace GUI.Controllers
         }
 
         // GET: Testimony/Create
+        public ActionResult Create()
+        {
+
+            return View();
+        }
+
+        // POST: Testimony/Create
         [HttpPost]
         public ActionResult Create(t_testimony t)
         {
@@ -42,22 +49,6 @@ namespace GUI.Controllers
                 return RedirectToAction("Index");
             }
             else
-            {
-                return View();
-            }
-        }
-
-        // POST: Testimony/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
             {
                 return View();
             }
