@@ -19,5 +19,7 @@ namespace  Data.Interfaces
         IFlightRepository FlightRepository { get; }
 
         IFlightMatchingRepository FlightMatchingRepository { get; }
+
+        ITestimonyRepository TestimonyRepository { get; }
     }
 }

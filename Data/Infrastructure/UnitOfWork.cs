@@ -59,6 +59,12 @@ namespace  Data.Infrastructure
             get { return flightMatchingRepository = new FlightMatchingRepository(dbFactory); ; }
         }
 
+        private ITestimonyRepository testimonyRepository;
+        public ITestimonyRepository TestimonyRepository
+        {
+            get { return testimonyRepository = new TestimonyRepository(dbFactory); ; }
+        }
+
 
         public void Dispose()
         {
