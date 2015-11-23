@@ -12,9 +12,14 @@ namespace Service
     public class TestimonyService : ITestimonyService
     {
    
-        static public DatabaseFactory dbFactory = new DatabaseFactory();
-        UnitOfWork utwk = new UnitOfWork(dbFactory);
+        static public DatabaseFactory dbFactory = null;
+        UnitOfWork utwk = null;
 
+        public TestimonyService()
+        {
+             dbFactory = new DatabaseFactory();
+             utwk = new UnitOfWork(dbFactory);
+        }
         public void AddTestimony(t_testimony f)
         {
             utwk.TestimonyRepository.Add(f);

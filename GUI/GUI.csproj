@@ -290,6 +290,7 @@
     <Content Include="Views\Hotel\EditHotel.cshtml" />
     <Content Include="Views\Hotel\DeleteHotel.cshtml" />
     <Content Include="Views\Testimony\Details.cshtml" />
+    <Content Include="Views\Testimony\Delete.cshtml" />
     <Content Include="Views\Testimony\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>

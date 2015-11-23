@@ -2,6 +2,7 @@
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -68,28 +69,29 @@ namespace GUI.Controllers
 
         // POST: Testimony/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(t_testimony testimony)
+        //int id, FormCollection collection
         {
 
-            try
+            if (ModelState.IsValid)
             {
-                t_testimony testimony = testimonyService.GetById(id);
+                // t_testimony testimony = testimonyService.GetById(id);
                 testimonyService.UpdateTestimony(testimony);
             
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
                 return View();
             }
         }
 
         // GET: Testimony/Delete/5
-        public ActionResult Delete(bool? saveChangesError = false, int id=0)
+        public ActionResult Delete(int id ,bool? saveChangesError)
         {
             if (saveChangesError.GetValueOrDefault())
             {
-                ViewBag.ErrorMessage = "Delete failed. Please try again.";
+                ViewBag.ErrorMessage = "Unable to save changes. Please try again.";
             }
 
             t_testimony testimony = testimonyService.GetById(id);
@@ -98,19 +100,23 @@ namespace GUI.Controllers
 
         // POST: Testimony/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 t_testimony testimony = testimonyService.GetById(id);
                 testimonyService.DeleteTestimony(testimony);
 
-                return RedirectToAction("Index");
+                
             }
-            catch
+            catch (DataException)
             {
-                return View();
+                return RedirectToAction("Delete",
+                   new System.Web.Routing.RouteValueDictionary {
+        { "id", id },
+        { "saveChangesError", true } });
             }
+            return RedirectToAction("Index");
         }
     }
 }
