@@ -29,7 +29,7 @@ namespace GUI.Controllers
             var onePageOfProducts = allTestimonies.ToPagedList(pageNumber, 4); // will only contain 4 testimonies max because of the pageSize
 
             ViewBag.OnePageOfProducts = onePageOfProducts;
-            return View();
+            return View(allTestimonies.ToPagedList(pageNumber, 4));
             
         }
 
