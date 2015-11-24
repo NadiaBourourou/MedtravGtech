@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Data.Infrastructure;
+using Data.Models;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +11,21 @@ namespace GUI.Controllers
 {
     public class HotelController : Controller
     {
-       // private Data.Models.medtravdbContext = new Models.medtravdbContext();
-        
+
+        public UnitOfWork unitOfWork = new UnitOfWork();
+
+        IHotelService ause;
+        public HotelController(IHotelService ause)
+        {
+            this.ause = ause;
+        }
+        // private Data.Models.medtravdbContext = new Models.medtravdbContext();
+
         // GET: Hotel
         public ActionResult Index()
         {
-            return View();
+            var l = ause.getAllHotels();
+            return View(l);
         }
 
         // GET: Hotel/Details/5
@@ -30,15 +42,15 @@ namespace GUI.Controllers
 
         // POST: Hotel/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(t_hotel a)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
+            if (ModelState.IsValid)
+            {
+                ause.AddHotel(a);
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
                 return View();
             }
@@ -47,7 +59,8 @@ namespace GUI.Controllers
         // GET: Hotel/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            t_hotel hotel = ause.GetById(id);
+            return View(hotel);
         }
 
         // POST: Hotel/Edit/5
@@ -56,7 +69,10 @@ namespace GUI.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                t_hotel hotel = ause.GetById(id);
+                ause.UpdateHotel(hotel);
+                //unitOfWork.Save();
+
 
                 return RedirectToAction("Index");
             }
@@ -67,18 +83,25 @@ namespace GUI.Controllers
         }
 
         // GET: Hotel/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(bool? saveChangesError = false, int id = 0)
         {
-            return View();
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
+            }
+
+            t_hotel hotel = ause.GetById(id);
+            return View(hotel);
         }
 
         // POST: Hotel/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                t_hotel hotel = ause.GetById(id);
+                ause.DeleteHotel(hotel);
 
                 return RedirectToAction("Index");
             }

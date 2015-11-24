@@ -45,6 +45,10 @@ namespace GUI.App_Start
             container.RegisterType<IFlightRepository, FlightRepository>(new PerRequestLifetimeManager());
             container.RegisterType<IFlightMatchingRepository, IFlightMatchingRepository>(new PerRequestLifetimeManager());
             container.RegisterType<IDatabaseFactory, DatabaseFactory>(new PerRequestLifetimeManager());
+            container.RegisterType<ITestimonyService, TestimonyService>(new PerRequestLifetimeManager());
+            container.RegisterType<ITestimonyRepository, TestimonyRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IHotelRepository, HotelRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IHotelService, HotelService>(new PerRequestLifetimeManager());
 
         }
     }

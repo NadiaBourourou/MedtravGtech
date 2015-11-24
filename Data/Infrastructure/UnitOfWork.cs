@@ -26,6 +26,11 @@ namespace  Data.Infrastructure
         {
             this.dbFactory = dbFactory;
         }
+
+        public UnitOfWork()
+        {
+        }
+
         public void Commit()
         {
             DataContext.SaveChanges();
@@ -57,6 +62,12 @@ namespace  Data.Infrastructure
         public IFlightMatchingRepository FlightMatchingRepository
         {
             get { return flightMatchingRepository = new FlightMatchingRepository(dbFactory); ; }
+        }
+
+        private ITestimonyRepository testimonyRepository;
+        public ITestimonyRepository TestimonyRepository
+        {
+            get { return testimonyRepository = new TestimonyRepository(dbFactory); ; }
         }
 
 

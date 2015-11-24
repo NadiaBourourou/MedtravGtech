@@ -124,6 +124,7 @@
     <Compile Include="Repositories\FlightMatchingRepository.cs" />
     <Compile Include="Repositories\FlightRepository.cs" />
     <Compile Include="Repositories\HotelRepository.cs" />
+    <Compile Include="Repositories\TestimonyRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
