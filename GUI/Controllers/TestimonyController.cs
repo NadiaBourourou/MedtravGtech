@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using PagedList;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace GUI.Controllers
     {
         ITestimonyService testimonyService;
         int userId=1;
+        
 
         public TestimonyController(ITestimonyService testimonyService)
         {
@@ -20,10 +22,14 @@ namespace GUI.Controllers
         }
 
         // GET: Testimony
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var allTestimonies = testimonyService.getAllTestimonies();
-            return View(allTestimonies);
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+            var onePageOfProducts = allTestimonies.ToPagedList(pageNumber, 4); // will only contain 4 testimonies max because of the pageSize
+
+            ViewBag.OnePageOfProducts = onePageOfProducts;
+            return View();
             
         }
 
@@ -31,6 +37,7 @@ namespace GUI.Controllers
         public ActionResult Details(int id)
         {
             t_testimony testimony = testimonyService.GetById(id);
+            
             return View(testimony);
         }
 

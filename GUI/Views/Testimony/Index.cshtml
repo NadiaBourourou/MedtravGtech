@@ -4,7 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@using PagedList.Mvc; 
+@using PagedList; 
+
+<!-- import the included stylesheet for some (very basic) default styling -->
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+<h2>Testimonials</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -17,11 +24,13 @@
         <th>
             @Html.DisplayNameFor(model => model.date)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
+      
         <th>
             @Html.DisplayNameFor(model => model.title)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.patient_userId)
@@ -37,12 +46,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.date)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.title)
         </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.patient_userId)
         </td>
@@ -55,3 +66,4 @@
 }
 
 </table>
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))

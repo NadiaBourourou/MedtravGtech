@@ -26,13 +26,7 @@
             @Html.DisplayFor(model => model.date)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
+     
 
         <dt>
             @Html.DisplayNameFor(model => model.title)
@@ -43,12 +37,20 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        @*<dt>
             @Html.DisplayNameFor(model => model.patient_userId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.patient_userId)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
