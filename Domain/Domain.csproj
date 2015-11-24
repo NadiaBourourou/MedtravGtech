@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\t_favorite.cs" />
+    <Compile Include="Entities\t_tip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\t_booking.cs" />
     <Compile Include="Entities\t_clinic.cs" />

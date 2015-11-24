@@ -105,6 +105,7 @@
     <Compile Include="Models\Mapping\t_clinicbookingMap.cs" />
     <Compile Include="Models\Mapping\t_clinicMap.cs" />
     <Compile Include="Models\Mapping\t_doctorpatientMap.cs" />
+    <Compile Include="Models\Mapping\t_favoriteMap.cs" />
     <Compile Include="Models\Mapping\t_flightMap.cs" />
     <Compile Include="Models\Mapping\t_flightmatchingMap.cs" />
     <Compile Include="Models\Mapping\t_hotelbookingMap.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Models\Mapping\t_surgeryMap.cs" />
     <Compile Include="Models\Mapping\t_surgerypatientMap.cs" />
     <Compile Include="Models\Mapping\t_testimonyMap.cs" />
+    <Compile Include="Models\Mapping\t_tipMap.cs" />
     <Compile Include="Models\Mapping\t_userMap.cs" />
     <Compile Include="Models\medtravdbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -165,6 +167,11 @@
     <EmbeddedResource Include="Migrations\201511201404561_v7.resx">
       <DependentUpon>201511201404561_v7.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

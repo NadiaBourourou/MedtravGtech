@@ -17,6 +17,8 @@ namespace Data.Models
             this.t_surgery = new List<t_surgery>();
             this.t_surgerypatient = new List<t_surgerypatient>();
             this.t_testimony = new List<t_testimony>();
+            this.t_favorite = new List<t_favorite>();
+            this.t_tip = new List<t_tip>();
         }
 
         public string DTYPE { get; set; }
@@ -48,5 +50,8 @@ namespace Data.Models
         public virtual ICollection<t_surgery> t_surgery { get; set; }
         public virtual ICollection<t_surgerypatient> t_surgerypatient { get; set; }
         public virtual ICollection<t_testimony> t_testimony { get; set; }
+        public virtual ICollection<t_favorite> t_favorite { get; set; }
+        public virtual ICollection<t_tip> t_tip { get; set; }
+        
     }
 }

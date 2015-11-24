@@ -1,0 +1,9 @@
+﻿@model Data.Models.t_flight
+
+@{
+    ViewBag.Title = "Ajout";
+}
+
+<h2>Choose a flight</h2>
+
+@Html.DropDownList("MyDrownDown",(SelectList)ViewBag.DropDownValues)

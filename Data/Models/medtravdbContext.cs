@@ -33,6 +33,8 @@ namespace Data.Models
         public DbSet<t_surgerypatient> t_surgerypatient { get; set; }
         public DbSet<t_testimony> t_testimony { get; set; }
         public DbSet<t_user> t_user { get; set; }
+        public DbSet<t_tip> t_tip { get; set; }
+        public DbSet<t_favorite> t_favorite { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -52,6 +54,8 @@ namespace Data.Models
             modelBuilder.Configurations.Add(new t_surgerypatientMap());
             modelBuilder.Configurations.Add(new t_testimonyMap());
             modelBuilder.Configurations.Add(new t_userMap());
+            modelBuilder.Configurations.Add(new t_tipMap());
+            modelBuilder.Configurations.Add(new t_favoriteMap());
         }
     }
 }
