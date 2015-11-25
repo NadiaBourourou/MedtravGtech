@@ -11,8 +11,7 @@ namespace Data.Models.Mapping
             this.HasKey(t => t.idTip);
 
             // Properties
-            this.Property(t => t.idTip)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            this.Property(t => t.idTip);
 
             this.Property(t => t.title)
                 .HasMaxLength(255);

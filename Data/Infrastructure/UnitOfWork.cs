@@ -76,6 +76,18 @@ namespace  Data.Infrastructure
             get { return questionRepository = new QuestionRepository(dbFactory); ; }
         }
 
+        private IFavoriteRepository favoriteRepository;
+        public IFavoriteRepository FavoriteRepository
+        {
+            get { return favoriteRepository = new FavoriteRepository(dbFactory); ; }
+        }
+
+        private ITipRepository tipRepository;
+        public ITipRepository TipRepository
+        {
+            get { return tipRepository = new TipRepository(dbFactory); ; }
+
+        }
         public void Dispose()
         {
             DataContext.Dispose();

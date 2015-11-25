@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,8 @@ namespace GUI.Controllers
     public class FlightController : Controller
     {
         IFlightService flightService;
+        int userId = 1;
+
         public FlightController(IFlightService flightService)
         {
             this.flightService = flightService;
@@ -29,7 +32,8 @@ namespace GUI.Controllers
         // GET: Flight/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            t_flight flight = flightService.GetById(id);
+            return View(flight);
         }
 
         // GET: Flight/Create
@@ -43,48 +47,60 @@ namespace GUI.Controllers
         [HttpPost]
         public ActionResult Create(t_flight flight)
         {
-            // medtravdbContext db = new medtravdbContext();
+            medtravdbContext db = new medtravdbContext();
+            ViewBag.DropDownValuesDeparture = new SelectList(db.t_flightmatching, "idFlightMatching", "departure");
+            ViewBag.DropDownValuesArrival = new SelectList(db.t_flightmatching, "idFlightMatching", "arrival");
 
-            /*     if (ModelState.IsValid)
+
+            if (ModelState.IsValid)
                  {
-                     db.t_flight.Add(flight); //Albums avant
-                     db.SaveChanges();
+                     flight.patient_userId =userId;
+
+                     flightService.AddFlight(flight);
                      return RedirectToAction("Index");
-                 }*/
+                 }
+                 
+           // SelectList flights = new SelectList(new[] { "Abidjan - Port Bouet Airport (ABJ)", "Paris - Paris Charles-de-Gaulle (CDG)", "Malte - Malta International Airport (MLA)" });
 
-            SelectList flights = new SelectList(new[] { "Abidjan - Port Bouet Airport (ABJ)", "Paris - Paris Charles-de-Gaulle (CDG)", "Malte - Malta International Airport (MLA)" });
 
-
-            return View(flights);
+            return View();
         }
 
 
         // GET: Flight/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            t_flight flight = flightService.GetById(id);
+            return View(flight);
         }
 
         // POST: Flight/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(t_flight flight)
+            //int id, FormCollection collection
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                flightService.UpdateFlight(flight);
 
                 return RedirectToAction("Index");
             }
-            catch
+            else
             {
                 return View();
             }
         }
 
         // GET: Flight/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, bool? saveChangesError)
         {
-            return View();
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Unable to save changes. Please try again.";
+            }
+
+            t_flight flight = flightService.GetById(id);
+            return View(flight);
         }
 
         // POST: Flight/Delete/5
@@ -93,14 +109,17 @@ namespace GUI.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                t_flight flight = flightService.GetById(id);
+                flightService.DeleteFlight(flight);
             }
-            catch
+            catch (DataException)
             {
-                return View();
+                   return RedirectToAction("Delete",
+                   new System.Web.Routing.RouteValueDictionary {
+        { "id", id },
+        { "saveChangesError", true } });
             }
+            return RedirectToAction("Index");
         }
 
         public ActionResult Ajout()
@@ -110,8 +129,8 @@ namespace GUI.Controllers
             ViewBag.DropDownValues = new SelectList(new[] { "Abidjan - Port Bouet Airport (ABJ)", "Paris - Paris Charles-de-Gaulle (CDG)", "Malte - Malta International Airport (MLA)" });
             return View();
         }
-        
- 
+
+        [HttpGet]
         public ActionResult Ajout2(t_flight flight)
         {
             medtravdbContext db = new medtravdbContext();
