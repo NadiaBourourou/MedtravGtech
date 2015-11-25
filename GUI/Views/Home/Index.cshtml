@@ -1,31 +1,165 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<section class="services wrapper">
+    <ul class="clearfix">
+        <li class="animated wow fadeInDown">
+            <img class="icon" src="@Url.Content("~/Content/mytemplate/")img/icon1.png" alt="" />
+            <span class="separator"></span>
+            <h2>Partner clinics</h2>
+            <p>
+                 Medical Clinic is included in the official list of medical tourism service providers in Tunisia.
+            </p>
+        </li>
+        <li class="animated wow fadeInDown" data-wow-delay=".2s">
+            <img class="icon" src="@Url.Content("~/Content/mytemplate/")img/icon2.png" alt="" />
+            <span class="separator"></span>
+            <h2>Partner hotels</h2>
+            <p> Tunisia's world-class hotels are prepared to care for your medical tourism needs.</p>
+        </li>
+        <li class="animated wow fadeInDown" data-wow-delay=".4s">
+            <img class="icon" src="@Url.Content("~/Content/mytemplate/")img/icon3.png" alt="" />
+            <span class="separator"></span>
+            <h2>Partner airlines</h2>
+            <p> Grab cheap flights to Tunisia onboard our new fleet of aircrafts with an option to book a hotel.</p>
+        </li>
+    </ul>
+</section><!--  End services  -->
+
+<section class="video">
+    <div class="caption dark animated wow fadeInDown clearfix">
+        <h3> MEDTRAV</h3> </div>
+        <h3 class="animated wow fadeInDown"> What is medical tourism ?</h3>
+        <a href="https://www.youtube.com/watch?v=Sqip1JefI9Y" id="play_btn" class="fancybox animated wow flipInX" data-wow-duration="2s"></a>
+</section><!--  End video  -->
+
+
+
+
+<section class="testimonials wrapper">
+    <div class="title animated wow fadeIn">
+        <h2>Testimonials</h2>
+        <h3>What patients are saying about us</h3>
+        <hr class="separator" />
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <ul class="clearfix">
+        <li class="animated wow fadeInDown">
+            <p>
+                <img src="@Url.Content("~/Content/mytemplate/")img/quotes.png" alt="" class="quotes" />  I started this journey knowing that I wanted to seek cheaper health care out of the country, but had no idea how to make it happen. Through my online searches I came upon the Medtrav website, which impressed me. That initial good impression of the website was consistent with all of my dealings with Medtrav who truly took care of me. 
+                <span class="triangle"></span>
+            </p>
+            <div class="client">
+                <div class="client_details">
+                    <h4>John Richardson</h4>
+
+                </div>
+            </div>
+          
+        </li>
+        <li class="animated wow fadeInDown" data-wow-delay=".2s">
+            <p>
+                <img src="@Url.Content("~/Content/mytemplate/")img/quotes.png" alt="" class="quotes" />  Medtrav delivered exactly what they sold. The reality of the experience exceeded the promise. I am very happy with the results of two operations and extensive surgery work in Tunisia.
+                 <span class="triangle"></span>
+            </p>
+            <div class="client">
+                <div class="client_details">
+                    <h4>Alex Martin</h4>
+                  
+                </div>
+            </div>
+        </li>
+        <li class="animated wow fadeInDown" data-wow-delay=".4s">
+            <p>
+                <img src="@Url.Content("~/Content/mytemplate/")img/quotes.png" alt="" class="quotes" />  The results of my procedures are excellent. It is hard to believe that it has been a full year. The experience was actually better than I had anticipated. The Medtrav support was spectacular.
+                <span class="triangle"></span>
+            </p>
+            <div class="client">
+                <div class="client_details">
+                    <h4>Linda Doe</h4>
+             
+                </div>
+            </div>
+        </li>
+    </ul>
+</section><!--  End testimonials  -->
+
+
+<section class="blog_posts">
+    <div class="wrapper">
+        <div class="title animated wow fadeIn">
+            <h2>Recent Posts</h2>
+            <h3>the most recent posts from our blog</h3>
+            <hr class="separator" />
+        </div>
+
+        <ul class="clearfix">
+            <li class="animated wow fadeInDown">
+                <div class="media">
+                    <div class="date">
+                        <span class="day">25</span>
+                        <span class="month">Jun</span>
+                    </div>
+                    <a href="#">
+                        <img src="@Url.Content("~/Content/mytemplate/")img/sidibou.jpg" alt="" />
+                    </a>
+                </div>
+             
+                    <h1>Sidi Bou Said is one of the most beautiful cities in Tunisia, with a lot of history.</h1>
+                
+            </li>
+
+            <li class="animated wow fadeInDown" data-wow-delay=".2s">
+                <div class="media">
+                    <div class="date">
+                        <span class="day">11</span>
+                        <span class="month">May</span>
+                    </div>
+                    <a href="#">
+                        <img src="@Url.Content("~/Content/mytemplate/")img/sahara.jpg" alt="" />
+                    </a>
+                </div>
+            
+                    <h1>Discovery of the Sahara in Southern Tunisia and night in desert camp Sahara private sightseeing tour on request.</h1>
+               
+            </li>
+
+            <li class="animated wow fadeInDown" data-wow-delay=".4s">
+                <div class="media">
+                    <div class="date">
+                        <span class="day">13</span>
+                        <span class="month">Feb</span>
+                    </div>
+                    <a href="#">
+                        <img src="@Url.Content("~/Content/mytemplate/")img/dougga.jpg" alt="" />
+                    </a>
+                </div>
+                
+                    <h1>When you are in Tunisia you can combine sun and discovery of the archaeological sites.</h1>
+         
+            </li>
+
+            <li class="animated wow fadeInDown" data-wow-delay=".6s">
+                <div class="media">
+                    <div class="date">
+                        <span class="day">10</span>
+                        <span class="month">Jan</span>
+                    </div>
+                    <a href="#">
+                        <img src="@Url.Content("~/Content/mytemplate/")img/mer.jpg" alt="" />
+                    </a>
+                </div>
+           
+                    <h1>
+                        Discover the sunny seaside of Djerba Island with Medtrav.
+                    </h1>
+                
+            </li>
+        </ul>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section><!--  End blog_posts  -->
+

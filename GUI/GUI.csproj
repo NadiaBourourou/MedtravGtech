@@ -228,7 +228,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\TestimonyController.cs" />
-    <Compile Include="Controllers\TipController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,6 +241,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mytemplate\img\dougga.jpg" />
+    <Content Include="Content\mytemplate\img\mer.jpg" />
+    <Content Include="Content\mytemplate\img\sahara.jpg" />
+    <Content Include="Content\mytemplate\img\sidibou.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -276,7 +279,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -309,19 +311,15 @@
     <Content Include="Views\Question\Create.cshtml" />
     <Content Include="Views\Question\Edit.cshtml" />
     <Content Include="Views\Question\Delete.cshtml" />
-    <Content Include="Views\Tip\Create.cshtml" />
-    <Content Include="Views\Tip\Delete.cshtml" />
-    <Content Include="Views\Tip\Details.cshtml" />
-    <Content Include="Views\Tip\Edit.cshtml" />
-    <Content Include="Views\Tip\Index.cshtml" />
-    <Content Include="Views\Flight\Ajout.cshtml" />
-    <Content Include="Views\Flight\Ajout2.cshtml" />
-    <Content Include="Views\Flight\Delete.cshtml" />
-    <Content Include="Views\Flight\Details.cshtml" />
-    <Content Include="Views\Flight\Edit.cshtml" />
+    <Content Include="Views\Shared\_mytemplate.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Question\Answer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\mytemplate\css\" />
+    <Folder Include="Content\mytemplate\fonts\" />
+    <Folder Include="Content\mytemplate\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

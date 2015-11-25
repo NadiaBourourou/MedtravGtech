@@ -1,7 +1,42 @@
 ﻿@{
     ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2 style="margin-left:110px" >                    @ViewBag.Title.</h2>
 
-<p>Use this area to provide additional information.</p>
+
+<section class="services wrapper">
+    <div class="caption dark animated wow fadeInDown clearfix animated" style="visibility: visible; animation-name: fadeInDown;">
+        <h2>   Medical tourism portal</h2><br />
+        <p>
+             <font style="font-family:Calibri;font-size:18px;">
+                 <font style="font-family:Calibri;font-size:23px;">
+                     What is a medical trip? </font><br />
+
+                     Medical tourism is a form of health tourism commonly referring to the travel of people to another country for the purpose of obtaining medical treatment in that country. <br />
+                     This form of travel exists for a long time and it is now booming for several reasons:
+                     <br />•	Search for advanced  medical Technologies<br />
+                     •	Search for a higher quality of medical care<br />
+                     •	Unavailability of desired treatment in the country of origin<br />
+                     •	Faster access to care<br />
+                     •	tourist appearance<br />
+                     •	Cheaper costs<br />
+                     •	Etc.<br />
+                     <br />
+                     <br />
+                     <br />
+
+                 </font> 
+ </p>
+       
+    </div>
+  
+   
+</section><!--  End services  -->
+
+<section class="video">
+    <img src="@Url.Content("~/Content/mytemplate/")img/video_logo.png" alt="" class="video_logo animated wow fadeInDown" />
+    <h3 class="animated wow fadeInDown">who we are & what we do</h3>
+    <a href="http://www.youtube.com/embed/cBJyo0tgLnw" id="play_btn" class="fancybox animated wow flipInX" data-wow-duration="2s"></a>
+</section><!--  End video  -->
+
