@@ -311,6 +311,17 @@
     <Content Include="Views\Question\Create.cshtml" />
     <Content Include="Views\Question\Edit.cshtml" />
     <Content Include="Views\Question\Delete.cshtml" />
+	<Content Include="Views\Tip\Create.cshtml" />
+    <Content Include="Views\Tip\Delete.cshtml" />
+    <Content Include="Views\Tip\Details.cshtml" />
+    <Content Include="Views\Tip\Edit.cshtml" />
+    <Content Include="Views\Tip\Index.cshtml" />
+    <Content Include="Views\Flight\Ajout.cshtml" />
+    <Content Include="Views\Flight\Ajout2.cshtml" />
+    <Content Include="Views\Flight\Delete.cshtml" />
+    <Content Include="Views\Flight\Details.cshtml" />
+    <Content Include="Views\Flight\Edit.cshtml" />
+
     <Content Include="Views\Shared\_mytemplate.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Question\Answer.cshtml" />
