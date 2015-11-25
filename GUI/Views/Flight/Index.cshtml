@@ -89,9 +89,9 @@
             @Html.DisplayFor(modelItem => item.patient_userId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new {  id=item.flightId  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.flightId }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.flightId })
         </td>
     </tr>
 }

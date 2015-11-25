@@ -219,6 +219,7 @@
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TestimonyController.cs" />
+    <Compile Include="Controllers\TipController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -287,7 +288,26 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Flight\Index.cshtml" />
+    <Content Include="Views\Flight\Ajout.cshtml" />
+    <Content Include="Views\Flight\Ajout2.cshtml" />
     <Content Include="Views\Flight\Create.cshtml" />
+    <Content Include="Views\Testimony\Create.cshtml" />
+    <Content Include="Views\Testimony\Delete.cshtml" />
+    <Content Include="Views\Testimony\Details.cshtml" />
+    <Content Include="Views\Testimony\Edit.cshtml" />
+    <Content Include="Views\Testimony\Index.cshtml" />
+    <Content Include="Views\Hotel\CreateHotel.cshtml" />
+    <Content Include="Views\Hotel\DeleteHotel.cshtml" />
+    <Content Include="Views\Hotel\EditHotel.cshtml" />
+    <Content Include="Views\Hotel\Index.cshtml" />
+    <Content Include="Views\Flight\Details.cshtml" />
+    <Content Include="Views\Flight\Delete.cshtml" />
+    <Content Include="Views\Flight\Edit.cshtml" />
+    <Content Include="Views\Tip\Index.cshtml" />
+    <Content Include="Views\Tip\Details.cshtml" />
+    <Content Include="Views\Tip\Create.cshtml" />
+    <Content Include="Views\Tip\Edit.cshtml" />
+    <Content Include="Views\Tip\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

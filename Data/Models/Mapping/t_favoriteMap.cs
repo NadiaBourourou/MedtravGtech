@@ -12,8 +12,7 @@ namespace Data.Models.Mapping
             this.HasKey(t => t.idFavorite);
 
             // Properties
-            this.Property(t => t.idFavorite)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            this.Property(t => t.idFavorite);
 
             this.Property(t => t.nameFavorite)
                 .HasMaxLength(255);

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Data.Models.t_tip>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idTip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.liked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.disliked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idPatientVoted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.administrator_userId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idTip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.liked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disliked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idPatientVoted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.administrator_userId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.idTip }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idTip }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.idTip })
+        </td>
+    </tr>
+}
+
+</table>

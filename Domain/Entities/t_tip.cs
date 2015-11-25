@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,13 @@ namespace Data.Models
             this.favorites = new List<t_favorite>();
         }
 
+       
         public int idTip { get; set; }
+
+        [Required]
         public string title { get; set; }
+
+        [Required]
         public string body { get; set; }
         public int liked { get; set; }
         public int disliked { get; set; }
