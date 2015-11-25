@@ -16,10 +16,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.idTip, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tipId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.idTip, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.idTip, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tipId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tipId, "", new { @class = "text-danger" })
             </div>
         </div>
 

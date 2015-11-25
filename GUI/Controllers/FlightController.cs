@@ -15,6 +15,7 @@ namespace GUI.Controllers
     public class FlightController : Controller
     {
         IFlightService flightService;
+        
         int userId = 1;
 
         public FlightController(IFlightService flightService)
@@ -130,32 +131,53 @@ namespace GUI.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Ajout2(t_flight flight)
-        {
+     
+        public ActionResult Ajout2()
+        {//, SelectList MyDrownDown1, SelectList MyDrownDown2
             medtravdbContext db = new medtravdbContext();
             ViewBag.DropDownValuesDeparture = new SelectList(db.t_flightmatching, "idFlightMatching", "departure");
             ViewBag.DropDownValuesArrival = new SelectList(db.t_flightmatching, "idFlightMatching", "arrival");
+
+
 
             //POUR LES DOUBLONS ET L'ORDRE NON ALPHABETIQUE : ?!
             //ViewBag.DropDownValues = new SelectList(db.t_flightmatching, "idFlightMatching", "departure").Distinct()
             //db.t_flightmatching.OrderBy(t => t.departure).ToList();
 
-            if (ModelState.IsValid)
-                {
-/*
-                if (!String.IsNullOrEmpty(flight.departureLocation.ToString() && flight.arrivalLocation && flight.departureDate && flight.arrivalDate))
-                {
-                    movies = movies.Where(m => m.Genre.Contains(searchString)).ToList();
-                }
-                */
-                flightService.AddFlight(flight);
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return View();
-                }
+            /*   String dep1 = MyDrownDown1.SelectedValue.ToString();
+               String dep2 = MyDrownDown2.SelectedValue.ToString();
+
+               flight.departureLocation = dep1;
+               flight.arrivalLocation = dep2;
+               */
+            //if (ModelState.IsValid)
+            //    {
+
+            //    /*
+            //    if (!String.IsNullOrEmpty(flight.departureLocation.ToString() && flight.arrivalLocation && flight.departureDate && flight.arrivalDate))
+            //    {
+            //        movies = movies.Where(m => m.Genre.Contains(searchString)).ToList();
+            //    }
+            //    */
+
+            //    flightService.AddFlight(flight);
+            //        return RedirectToAction("Index");
+            //    }
+            //    else
+            //    {
+            //        return View();
+            //    }
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Ajout2(string MyDrownDown1, string MyDrownDown2)
+        {
+            int val1 = Int32.Parse(MyDrownDown1);
+            int val2 = Int32.Parse(MyDrownDown2);
+
+            return View();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Data.Models
         }
 
        
-        public int idTip { get; set; }
+        public int tipId { get; set; }
 
         [Required]
         public string title { get; set; }

@@ -8,10 +8,10 @@ namespace Data.Models.Mapping
         public t_tipMap()
         {
             // Primary Key
-            this.HasKey(t => t.idTip);
-
+            this.HasKey(t => t.tipId);
+            this.Property(t => t.tipId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             // Properties
-            this.Property(t => t.idTip);
+            this.Property(t => t.tipId);
 
             this.Property(t => t.title)
                 .HasMaxLength(255);
@@ -21,7 +21,7 @@ namespace Data.Models.Mapping
 
             // Table & Column Mappings
             this.ToTable("t_tip", "medtravdb");
-            this.Property(t => t.idTip).HasColumnName("tipId");
+            this.Property(t => t.tipId).HasColumnName("tipId");
             this.Property(t => t.title).HasColumnName("title");
             this.Property(t => t.body).HasColumnName("body");
             this.Property(t => t.liked).HasColumnName("liked");
