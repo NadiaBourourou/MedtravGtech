@@ -12,7 +12,7 @@ namespace Data.Models.Mapping
 
             // Properties
             this.Property(t => t.testimonyId)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             this.Property(t => t.description)
                 .HasMaxLength(255);
