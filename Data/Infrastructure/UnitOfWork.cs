@@ -70,6 +70,11 @@ namespace  Data.Infrastructure
             get { return testimonyRepository = new TestimonyRepository(dbFactory); ; }
         }
 
+        private IQuestionRepository questionRepository;
+        public IQuestionRepository QuestionRepository
+        {
+            get { return questionRepository = new QuestionRepository(dbFactory); ; }
+        }
 
         public void Dispose()
         {

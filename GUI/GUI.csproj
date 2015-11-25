@@ -226,6 +226,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\TestimonyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -302,6 +303,11 @@
     <Content Include="Views\Testimony\Details.cshtml" />
     <Content Include="Views\Testimony\Edit.cshtml" />
     <Content Include="Views\Testimony\Index.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\Question\Details.cshtml" />
+    <Content Include="Views\Question\Create.cshtml" />
+    <Content Include="Views\Question\Edit.cshtml" />
+    <Content Include="Views\Question\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

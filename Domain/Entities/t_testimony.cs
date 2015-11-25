@@ -13,6 +13,7 @@ namespace Data.Models
         [StringLength(255, MinimumLength = 3)]
         [Required]
         public string title { get; set; }
+        [StringLength(255, MinimumLength = 5)]
         [Required]
         public string description { get; set; }
         public Nullable<int> patient_userId { get; set; }
