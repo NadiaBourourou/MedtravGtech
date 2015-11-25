@@ -70,17 +70,10 @@ namespace  Data.Infrastructure
             get { return testimonyRepository = new TestimonyRepository(dbFactory); ; }
         }
 
-        private IFavoriteRepository favoriteRepository;
-        public IFavoriteRepository FavoriteRepository
+        private IQuestionRepository questionRepository;
+        public IQuestionRepository QuestionRepository
         {
-            get { return favoriteRepository = new FavoriteRepository(dbFactory); ; }
-        }
-
-        private ITipRepository tipRepository;
-        public ITipRepository TipRepository
-        {
-            get { return tipRepository = new TipRepository(dbFactory); ; }
-
+            get { return questionRepository = new QuestionRepository(dbFactory); ; }
         }
 
         public void Dispose()

@@ -21,9 +21,7 @@ namespace  Data.Interfaces
         IFlightMatchingRepository FlightMatchingRepository { get; }
 
         ITestimonyRepository TestimonyRepository { get; }
+        IQuestionRepository QuestionRepository { get; }
 
-        IFavoriteRepository FavoriteRepository { get; }
-
-        ITipRepository TipRepository { get; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Data.Models.t_testimony
+﻿@model Data.Models.t_question
 
 @{
     ViewBag.Title = "Details";
@@ -7,15 +7,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>t_testimony</h4>
+    <h4>t_question</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.testimonyId)
+            @Html.DisplayNameFor(model => model.questionId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.testimonyId)
+            @Html.DisplayFor(model => model.questionId)
         </dd>
 
         <dt>
@@ -25,8 +25,6 @@
         <dd>
             @Html.DisplayFor(model => model.date)
         </dd>
-
-     
 
         <dt>
             @Html.DisplayNameFor(model => model.title)
@@ -44,17 +42,25 @@
             @Html.DisplayFor(model => model.description)
         </dd>
 
-        @*<dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.response)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.response)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.patient_userId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.patient_userId)
-        </dd>*@
+        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.testimonyId  }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

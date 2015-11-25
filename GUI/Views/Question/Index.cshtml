@@ -1,17 +1,16 @@
-﻿@model IEnumerable<Data.Models.t_testimony>
+﻿@model IEnumerable<Data.Models.t_question>
 
 @{
     ViewBag.Title = "Index";
 }
 
-@using PagedList.Mvc; 
-@using PagedList; 
 
-<!-- import the included stylesheet for some (very basic) default styling -->
+@using PagedList.Mvc;
+@using PagedList;
+
 <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
-
-
-<h2>Testimonials</h2>
+ 
+<h2>Questions</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -19,18 +18,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.testimonyId)
+            @Html.DisplayNameFor(model => model.questionId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.date)
         </th>
-      
         <th>
             @Html.DisplayNameFor(model => model.title)
         </th>
-
         <th>
             @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.response)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.patient_userId)
@@ -41,26 +41,27 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.testimonyId)
+            @Html.DisplayFor(modelItem => item.questionId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.date)
         </td>
-       
         <td>
             @Html.DisplayFor(modelItem => item.title)
         </td>
-         <td>
+        <td>
             @Html.DisplayFor(modelItem => item.description)
         </td>
-       
+        <td>
+            @Html.DisplayFor(modelItem => item.response)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.patient_userId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.testimonyId  }) |
-            @Html.ActionLink("Details", "Details", new { id = item.testimonyId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.testimonyId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.questionId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.questionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.questionId })
         </td>
     </tr>
 }

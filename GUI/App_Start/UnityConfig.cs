@@ -47,6 +47,8 @@ namespace GUI.App_Start
             container.RegisterType<IDatabaseFactory, DatabaseFactory>(new PerRequestLifetimeManager());
             container.RegisterType<ITestimonyService, TestimonyService>(new PerRequestLifetimeManager());
             container.RegisterType<ITestimonyRepository, TestimonyRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IQuestionService, QuestionService>(new PerRequestLifetimeManager());
+            container.RegisterType<IQuestionRepository, QuestionRepository>(new PerRequestLifetimeManager());
             container.RegisterType<IHotelRepository, HotelRepository>(new PerRequestLifetimeManager());
             container.RegisterType<IHotelService, HotelService>(new PerRequestLifetimeManager());
             container.RegisterType<IFavoriteService, FavoriteService>(new PerRequestLifetimeManager());

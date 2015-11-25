@@ -10,55 +10,52 @@ using System.Web.Mvc;
 
 namespace GUI.Controllers
 {
-    public class TestimonyController : Controller
+    public class QuestionController : Controller
     {
-        ITestimonyService testimonyService;
-        int userId=1;
-        
 
-        public TestimonyController(ITestimonyService testimonyService)
+        IQuestionService questionService;
+        int userId = 1;
+
+        public QuestionController(IQuestionService questionService)
         {
-            this.testimonyService = testimonyService;
+            this.questionService = questionService;
         }
 
-        // GET: Testimony
+        // GET: Question
         public ActionResult Index(int? page)
         {
-            var allTestimonies = testimonyService.getAllTestimonies();
+            var allQuestions = questionService.getAllQuestions();
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = allTestimonies.ToPagedList(pageNumber, 4); // will only contain 4 testimonies max because of the pageSize
+            var onePageOfProducts = allQuestions.ToPagedList(pageNumber, 4); // will only contain 4 testimonies max because of the pageSize
 
             ViewBag.OnePageOfProducts = onePageOfProducts;
-            return View(allTestimonies.ToPagedList(pageNumber, 4));
-            
+            return View(allQuestions.ToPagedList(pageNumber, 4));
         }
 
-        // GET: Testimony/Details/5
+        // GET: Question/Details/5
         public ActionResult Details(int id)
         {
-            t_testimony testimony = testimonyService.GetById(id);
-            
-            return View(testimony);
+            t_question question = questionService.GetById(id);
+
+            return View(question);
         }
 
-        // GET: Testimony/Create
+        // GET: Question/Create
         public ActionResult Create()
         {
-
             return View();
         }
 
-        // POST: Testimony/Create
+        // POST: Question/Create
         [HttpPost]
-        public ActionResult Create(t_testimony t)
+        public ActionResult Create(t_question t )
         {
-
             if (ModelState.IsValid)
             {
                 t.date = DateTime.Now;
-                t.patient_userId =userId;
+                t.patient_userId = userId;
 
-                testimonyService.AddTestimony(t);
+                questionService.AddQuestion(t);
                 return RedirectToAction("Index");
             }
             else
@@ -67,23 +64,23 @@ namespace GUI.Controllers
             }
         }
 
-        // GET: Testimony/Edit/5
+        // GET: Question/Edit/5
         public ActionResult Edit(int id)
         {
-            t_testimony testimony = testimonyService.GetById(id);
-            return View(testimony);
+            t_question question = questionService.GetById(id);
+            return View(question);
         }
 
-        // POST: Testimony/Edit/5
+        // POST: Question/Edit/5
         [HttpPost]
-        public ActionResult Edit(t_testimony testimony)
+        public ActionResult Edit(t_question question)
         {
 
+
             if (ModelState.IsValid)
-            {
-                // t_testimony testimony = testimonyService.GetById(id);
-                testimonyService.UpdateTestimony(testimony);
-            
+            { 
+                questionService.UpdateQuestion(question);
+
                 return RedirectToAction("Index");
             }
             else
@@ -92,28 +89,28 @@ namespace GUI.Controllers
             }
         }
 
-        // GET: Testimony/Delete/5
-        public ActionResult Delete(int id ,bool? saveChangesError)
+        // GET: Question/Delete/5
+        public ActionResult Delete(int id, bool? saveChangesError)
         {
             if (saveChangesError.GetValueOrDefault())
             {
                 ViewBag.ErrorMessage = "Unable to save changes. Please try again.";
             }
 
-            t_testimony testimony = testimonyService.GetById(id);
-            return View(testimony);
+            t_question question = questionService.GetById(id);
+            return View(question);
         }
 
-        // POST: Testimony/Delete/5
+        // POST: Question/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                t_testimony testimony = testimonyService.GetById(id);
-                testimonyService.DeleteTestimony(testimony);
+                t_question question = questionService.GetById(id);
+                questionService.DeleteQuestion(question);
 
-                
+
             }
             catch (DataException)
             {

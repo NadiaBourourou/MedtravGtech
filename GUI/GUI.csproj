@@ -89,6 +89,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\Connector.NET 6.9\Assemblies\v4.5\MySql.Web.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -218,8 +226,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\TestimonyController.cs" />
-    <Compile Include="Controllers\TipController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -233,6 +241,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -288,26 +297,17 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Flight\Index.cshtml" />
-    <Content Include="Views\Flight\Ajout.cshtml" />
-    <Content Include="Views\Flight\Ajout2.cshtml" />
     <Content Include="Views\Flight\Create.cshtml" />
     <Content Include="Views\Testimony\Create.cshtml" />
     <Content Include="Views\Testimony\Delete.cshtml" />
     <Content Include="Views\Testimony\Details.cshtml" />
     <Content Include="Views\Testimony\Edit.cshtml" />
     <Content Include="Views\Testimony\Index.cshtml" />
-    <Content Include="Views\Hotel\CreateHotel.cshtml" />
-    <Content Include="Views\Hotel\DeleteHotel.cshtml" />
-    <Content Include="Views\Hotel\EditHotel.cshtml" />
-    <Content Include="Views\Hotel\Index.cshtml" />
-    <Content Include="Views\Flight\Details.cshtml" />
-    <Content Include="Views\Flight\Delete.cshtml" />
-    <Content Include="Views\Flight\Edit.cshtml" />
-    <Content Include="Views\Tip\Index.cshtml" />
-    <Content Include="Views\Tip\Details.cshtml" />
-    <Content Include="Views\Tip\Create.cshtml" />
-    <Content Include="Views\Tip\Edit.cshtml" />
-    <Content Include="Views\Tip\Delete.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\Question\Details.cshtml" />
+    <Content Include="Views\Question\Create.cshtml" />
+    <Content Include="Views\Question\Edit.cshtml" />
+    <Content Include="Views\Question\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
