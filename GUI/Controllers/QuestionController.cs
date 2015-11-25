@@ -89,6 +89,32 @@ namespace GUI.Controllers
             }
         }
 
+        // GET: Question/Edit/5
+        public ActionResult Answer(int id)
+        {
+            t_question question = questionService.GetById(id);
+            return View(question);
+        }
+
+        // POST: Question/Edit/5
+        [HttpPost]
+        public ActionResult Answer(t_question question)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                questionService.UpdateQuestion(question);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
         // GET: Question/Delete/5
         public ActionResult Delete(int id, bool? saveChangesError)
         {

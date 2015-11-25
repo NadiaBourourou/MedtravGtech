@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<Data.Models.t_testimony>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Testimonials";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
 }
 
 @using PagedList.Mvc; 
@@ -10,13 +11,16 @@
 <!-- import the included stylesheet for some (very basic) default styling -->
 <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-
+<div id="monTab">
 <h2>Testimonials</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+    <br />
+    <br />
+<table border="1">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.testimonyId)
@@ -58,12 +62,17 @@
             @Html.DisplayFor(modelItem => item.patient_userId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.testimonyId  }) |
-            @Html.ActionLink("Details", "Details", new { id = item.testimonyId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.testimonyId })
-        </td>
+            <div style="color:blue;   padding:40px;">
+                @Html.ActionLink("Edit", "Edit", new { id = item.testimonyId }) 
+                @Html.ActionLink("Details", "Details", new { id = item.testimonyId }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.testimonyId })
+            </div></td>
     </tr>
 }
 
 </table>
-@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+
+    </div>
+<div style="margin-left:550px;">
+    @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+</div>

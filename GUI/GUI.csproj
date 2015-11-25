@@ -241,6 +241,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mytemplate\img\dougga.jpg" />
+    <Content Include="Content\mytemplate\img\mer.jpg" />
+    <Content Include="Content\mytemplate\img\sahara.jpg" />
+    <Content Include="Content\mytemplate\img\sidibou.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -309,12 +313,12 @@
     <Content Include="Views\Question\Delete.cshtml" />
     <Content Include="Views\Shared\_mytemplate.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Question\Answer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\mytemplate\css\" />
     <Folder Include="Content\mytemplate\fonts\" />
-    <Folder Include="Content\mytemplate\img\" />
     <Folder Include="Content\mytemplate\js\" />
   </ItemGroup>
   <ItemGroup>
