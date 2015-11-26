@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FavoriteService.cs" />
+    <Compile Include="FlightMatchingService.cs" />
     <Compile Include="FlightService.cs" />
     <Compile Include="HotelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,4 @@
-﻿@model Data.Models.t_flight
+﻿@model Data.Models.t_flightmatching
 
 @{
     ViewBag.Title = "Details";
@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.flightId)
+            @Html.DisplayNameFor(model => model.idFlightMatching)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.flightId)
+            @Html.DisplayFor(model => model.idFlightMatching)
         </dd>
 
         <dt>
@@ -27,43 +27,35 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.arrivalDate)
+            @Html.DisplayNameFor(model => model.arrival)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.arrivalDate)
+            @Html.DisplayFor(model => model.arrival)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.arrivalLocation)
+            @Html.DisplayNameFor(model => model.dateFlightMatchingArr)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.arrivalLocation)
+            @Html.DisplayFor(model => model.dateFlightMatchingArr)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.departureDate)
+            @Html.DisplayNameFor(model => model.dateFlightMatchingDep)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.departureDate)
+            @Html.DisplayFor(model => model.dateFlightMatchingDep)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.departureLocation)
+            @Html.DisplayNameFor(model => model.departure)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.departureLocation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.nbSits)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nbSits)
+            @Html.DisplayFor(model => model.departure)
         </dd>
 
         <dt>
@@ -72,6 +64,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.numFlight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numberOfSits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numberOfSits)
         </dd>
 
         <dt>
@@ -98,17 +98,9 @@
             @Html.DisplayFor(model => model.timeFlightMatchingDep)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.patient_userId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.patient_userId)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.flightId }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.idFlightMatching }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

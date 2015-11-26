@@ -1,4 +1,4 @@
-﻿@model Data.Models.t_flight
+﻿@model Data.Models.t_flightmatching
 
 @{
     ViewBag.Title = "Edit";
@@ -16,10 +16,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.flightId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idFlightMatching, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.flightId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.flightId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.idFlightMatching, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.idFlightMatching, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -32,42 +32,34 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.arrivalDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.arrival, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.arrivalDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.arrivalDate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.arrival, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.arrival, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.arrivalLocation, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.dateFlightMatchingArr, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.arrivalLocation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.arrivalLocation, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.dateFlightMatchingArr, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dateFlightMatchingArr, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.departureDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.dateFlightMatchingDep, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.departureDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.departureDate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.dateFlightMatchingDep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dateFlightMatchingDep, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.departureLocation, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.departure, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.departureLocation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.departureLocation, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.nbSits, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nbSits, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nbSits, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.departure, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.departure, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -76,6 +68,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.numFlight, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.numFlight, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.numberOfSits, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numberOfSits, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.numberOfSits, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -100,14 +100,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.timeFlightMatchingDep, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.timeFlightMatchingDep, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.patient_userId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.patient_userId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.patient_userId, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -47,6 +47,25 @@ namespace Service
             utwk.Commit();
         }
 
+        public void PositiveVote(t_tip tipFound, int idPatientVoted)
+        {
+             
+           // t_tip tipFound =utwk.TipRepository.GetById(idTip);
+            //  if(tipFound.idPatientVoted)
+            int valPosInit = tipFound.liked;
+            tipFound.liked = valPosInit + 1;
+            utwk.TipRepository.Update(tipFound);
+            utwk.Commit();
+
+        }
+
+        public void NegativeVote(t_tip tip, int idPatientVoted)
+        {
+            int valNegInit = tip.disliked;
+            tip.disliked = valNegInit + 1;
+            utwk.TipRepository.Update(tip);
+            utwk.Commit();
+        }
     }
 
     public interface ITipService
@@ -56,6 +75,8 @@ namespace Service
         t_tip GetById(long id);
         void DeleteTip(t_tip tip);
         void UpdateTip(t_tip tip);
+        void PositiveVote(t_tip tip, int idPatientVoted);
+        void NegativeVote(t_tip tip, int idPatientVoted);
     }
 
 }
