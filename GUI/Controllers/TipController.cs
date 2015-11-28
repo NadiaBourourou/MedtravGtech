@@ -12,7 +12,7 @@ namespace GUI.Controllers
     public class TipController : Controller
     {
         ITipService tipService;
-        int patientId = 1;
+        int patientId = 1; //à mettre 0 par défaut quand il y aura les sessions
         int adminId = 5;
 
         public TipController(ITipService tipService)
@@ -23,6 +23,9 @@ namespace GUI.Controllers
         // GET: Tip
         public ActionResult Index()
         {
+            ViewBag.connectedAdminId = adminId;
+            ViewBag.connectedPatientId = patientId;
+
             var allTips = tipService.GetAllTips();
             return View(allTips);
         }
@@ -45,7 +48,7 @@ namespace GUI.Controllers
         public ActionResult Create(t_tip tip)
         {
 
-            tip.idPatientVoted = patientId;
+            //tip.idPatientVoted = 0;
             tip.administrator_userId = adminId;
             tip.liked = 0;
             tip.disliked = 0;
@@ -115,5 +118,42 @@ namespace GUI.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        // GET: Tip/Appreciate/5
+        public ActionResult Appreciate(int id)
+        {
+            t_tip tip = tipService.GetById(id);
+            tipService.PositiveVote(tip, patientId);
+            return RedirectToAction("Index");
+
+        }
+
+        // POST: Tip/Appreciate/5
+        [HttpPost]
+        public ActionResult Appreciate(t_tip tip)
+        //int id, FormCollection collection
+        {
+                return RedirectToAction("Index");  
+        }
+
+
+        // GET: Tip/Dislike/5
+        public ActionResult Dislike(int id)
+        {
+            t_tip tip = tipService.GetById(id);
+            tipService.NegativeVote(tip, patientId);
+            return RedirectToAction("Index");
+
+        }
+
+        // POST: Tip/Dislike/5
+        [HttpPost]
+        public ActionResult Dislike(t_tip tip)
+        //int id, FormCollection collection
+        {
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
