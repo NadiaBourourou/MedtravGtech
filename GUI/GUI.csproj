@@ -97,6 +97,10 @@
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Recaptcha, Version=1.0.5.0, Culture=neutral, PublicKeyToken=9afc4d65b28c38c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -266,6 +270,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Video\questions.mp3" />
+    <Content Include="Video\testimonials.mp3" />
+    <Content Include="Video\video.mp4" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -338,8 +345,7 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Tip\Like.cshtml" />
     <Content Include="Views\Tip\Appreciate.cshtml" />
-    <Content Include="Views\Flight\AddFlight1.cshtml" />
-    <Content Include="Views\Flight\Add2Affichage.cshtml" />
+    <Content Include="Views\Question\GetLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

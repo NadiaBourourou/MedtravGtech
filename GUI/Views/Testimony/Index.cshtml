@@ -14,12 +14,33 @@
 <div id="monTab">
 <h2>Testimonials</h2>
 
+    @using (Html.BeginForm("Index", "Testimony", FormMethod.Get))
+    {
+        //the following are search options
+        <b> Search Option: </b>
+            @Html.RadioButton("optionChoisie", "Title",  htmlAttributes: new { @checked="isChecked"  }) <text>Title</text>
+            @Html.RadioButton("optionChoisie", "Description") <text> Description </text>
+            @Html.TextBox("searchTextBox") 
+    <input type = "submit"  name = "submit" value = "Search" />
+        }
+
+    <br /><br /> <br />
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
     <br />
     <br />
+
+    @if (Model.Count() == 0)
+    { <tr > <td colspan = "3" >  <center><b style="color:coral">Sorry, records not found </b></center></td>
+    </tr >
+    <br />
+    <br />
+    }
+    else { 
+
+
 <table border="1">
     <tr>
         <th>
@@ -62,17 +83,38 @@
             @Html.DisplayFor(modelItem => item.patient_userId)
         </td>
         <td>
-            <div style="color:blue;   padding:40px;">
-                @Html.ActionLink("Edit", "Edit", new { id = item.testimonyId }) 
-                @Html.ActionLink("Details", "Details", new { id = item.testimonyId }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.testimonyId })
+        
+        <div style="color:blue;   padding:40px;">
+               
+                @Html.ActionLink("Details", "Details", new { id = item.testimonyId }) <br /><br />
+         @{  if (item.patient_userId == ViewBag.connectedUserId)
+             {
+             @Html.ActionLink("Edit", "Edit", new { id = item.testimonyId })<br/><br />
+                @Html.ActionLink("Delete", "Delete", new { id = item.testimonyId })<br/><br />
+             }  } 
+
             </div></td>
     </tr>
 }
 
 </table>
 
+             }
     </div>
 <div style="margin-left:550px;">
     @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
 </div>
+
+<br />
+<br />
+<center>
+
+    <video width="320" height="240" controls>
+        <source src="~/Video/video.mp4" type="video/mp4">
+
+        Your browser does not support the video tag.
+    </video>
+
+    <embed src="~/Video/testimonials.mp3" width="0" height="0" />
+</center>
+

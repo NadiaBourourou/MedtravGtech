@@ -12,9 +12,53 @@
  
 <h2>Questions</h2>
 
+<br />
+<br />
+<center>
+
+    <video width="360" height="280" controls>
+        <source src="~/Video/video.mp4" type="video/mp4">
+
+        Your browser does not support the video tag.
+    </video>
+
+    <embed src="~/Video/questions.mp3" width="0" height="0" />
+</center>
+
+<br />
+<br />
+
+
+
+@using (Html.BeginForm("Index", "Question", FormMethod.Get))
+{
+    //the following are search options
+    <b> Search Option: </b>
+        @Html.RadioButton("optionChoisie", "Title", htmlAttributes: new { @checked = "isChecked" }) <text>Title</text>
+        @Html.RadioButton("optionChoisie", "Description") <text> Description </text>
+        @Html.TextBox("searchTextBox")
+        <input type="submit" name="submit" value="Search" />
+}
+
+<br /><br /> <br />
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
+    <br />
+    <br />
+
+    @if (Model.Count() == 0)
+    { <tr > <td colspan = "3" >  <center><b style="color:coral">Sorry, records not found </b></center></td>
+    </tr >
+    <br />
+    <br />
+    }
+    else
+    {
+
 <table class="table">
     <tr>
         <th>
@@ -38,7 +82,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.questionId)
@@ -59,13 +104,67 @@
             @Html.DisplayFor(modelItem => item.patient_userId)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.questionId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.questionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.questionId }) |
-            @Html.ActionLink("Answer", "Answer", new { id = item.questionId })
-        </td>
+            
+            @Html.ActionLink("Details", "Details", new { id = item.questionId }) 
+           
+           
+             @{  if (item.patient_userId == ViewBag.connectedUserId)
+                 {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.questionId })<br /><br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.questionId })<br /><br />
+                 }  }
+
+                 
+              
+            @if (ViewBag.connectedUserId == 5)
+            {  @Html.ActionLink("Answer", "Answer", new { id = item.questionId })
+
+
+            }
+         </td>
     </tr>
-}
+                 }
 
 </table>
+
+                 }
+
 @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+
+
+<br />
+<br />
+
+
+<div style="width:600px; margin-left:auto; margin-right:auto">
+
+    <p>Click the button to get our social network pages </p>
+    <input id="btnAjax" name="btnAjax" type="button" value="Social network pages" />
+    <div id="mylinks" ></div>
+</div>
+@section Scripts {
+<script>
+    $('#btnAjax').click(function () {
+        $.ajax({
+            url: '/Question/GetLinks',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html'
+
+        })
+        .success(function (result) {
+            $('#mylinks').html(result);
+        })
+        .error(function (xhr, status) {
+            alert(status);
+        })
+    });
+</script>
+
+<script src="https://apis.google.com/js/platform.js" async defer>
+        { lang: 'en-GB' }
+</script>
+
+    }
+
+

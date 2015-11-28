@@ -1,5 +1,6 @@
 ﻿using Data.Models;
 using PagedList;
+using Recaptcha;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace GUI.Controllers
     public class TestimonyController : Controller
     {
         ITestimonyService testimonyService;
-        int userId=1;
+        int connectedUserId=1;
         
 
         public TestimonyController(ITestimonyService testimonyService)
@@ -22,11 +23,22 @@ namespace GUI.Controllers
         }
 
         // GET: Testimony
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page,string optionChoisie="",string searchTextBox="")
         {
+            ViewBag.connectedUserId=connectedUserId;
             var allTestimonies = testimonyService.getAllTestimonies();
+           
+            if (optionChoisie == "Title")
+            {
+               allTestimonies = allTestimonies.Where(s => s.title.Contains(searchTextBox) || searchTextBox == null).ToList();
+            }
+            else 
+            {
+                allTestimonies = allTestimonies.Where(s => s.description.Contains(searchTextBox) || searchTextBox == null).ToList();
+            }
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
             var onePageOfProducts = allTestimonies.ToPagedList(pageNumber, 4); // will only contain 4 testimonies max because of the pageSize
+
 
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View(allTestimonies.ToPagedList(pageNumber, 4));
@@ -36,6 +48,7 @@ namespace GUI.Controllers
         // GET: Testimony/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.connectedUserId = connectedUserId;
             t_testimony testimony = testimonyService.GetById(id);
             
             return View(testimony);
@@ -50,13 +63,20 @@ namespace GUI.Controllers
 
         // POST: Testimony/Create
         [HttpPost]
-        public ActionResult Create(t_testimony t)
+        [RecaptchaControlMvc.CaptchaValidator]
+        public ActionResult Create(t_testimony t, bool captchaValid, string captchaErrorMessage)
         {
 
             if (ModelState.IsValid)
             {
+                if (!captchaValid)
+                {
+                    ModelState.AddModelError("recaptcha", captchaErrorMessage);
+                    return View(t);
+                }
+
                 t.date = DateTime.Now;
-                t.patient_userId =userId;
+                t.patient_userId =connectedUserId;
 
                 testimonyService.AddTestimony(t);
                 return RedirectToAction("Index");
@@ -124,5 +144,10 @@ namespace GUI.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+     
+
+
     }
 }

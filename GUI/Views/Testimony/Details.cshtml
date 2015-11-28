@@ -55,6 +55,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.testimonyId  }) |
+    @{  if (Model.patient_userId == ViewBag.connectedUserId)
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.testimonyId })          <br /><br />
+        }  }
+     
     @Html.ActionLink("Back to List", "Index")
 </p>

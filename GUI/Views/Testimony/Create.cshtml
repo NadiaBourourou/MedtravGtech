@@ -49,6 +49,11 @@
             </div>
 
 
+            <li>
+                @Html.Raw(Html.GenerateCaptcha())
+                @Html.ValidationMessage("recaptcha")
+            </li>
+
 
 
 
