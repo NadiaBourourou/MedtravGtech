@@ -333,7 +333,6 @@
     <Content Include="Views\Shared\_mytemplate.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Question\Answer.cshtml" />
-    <Content Include="Views\Question\GetLinks.cshtml" />
     <Content Include="Views\FlightMatching\Index.cshtml" />
     <Content Include="Views\FlightMatching\Details.cshtml" />
     <Content Include="Views\FlightMatching\Create.cshtml" />
@@ -346,6 +345,7 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Tip\Like.cshtml" />
     <Content Include="Views\Tip\Appreciate.cshtml" />
+    <Content Include="Views\Question\GetLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
