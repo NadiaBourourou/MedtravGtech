@@ -1,10 +1,13 @@
 ﻿using Data.Models;
+using GUI.Models;
+using Newtonsoft.Json;
 using PagedList;
 using Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,17 +17,30 @@ namespace GUI.Controllers
     {
 
         IQuestionService questionService;
-        int userId = 1;
+        int connectedUserId = 1;
 
         public QuestionController(IQuestionService questionService)
         {
             this.questionService = questionService;
         }
 
+       
         // GET: Question
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string optionChoisie = "", string searchTextBox = "")
         {
-            var allQuestions = questionService.getAllQuestions();
+            
+            ViewBag.connectedUserId = connectedUserId;
+             var allQuestions = questionService.getAllQuestions();
+          
+            if (optionChoisie == "Title")
+            {
+                allQuestions = allQuestions.Where(s => s.title.Contains(searchTextBox) || searchTextBox == null).ToList();
+            }
+            else
+            {
+                allQuestions = allQuestions.Where(s => s.description.Contains(searchTextBox) || searchTextBox == null).ToList();
+            }
+
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
             var onePageOfProducts = allQuestions.ToPagedList(pageNumber, 4); // will only contain 4 testimonies max because of the pageSize
 
@@ -35,6 +51,7 @@ namespace GUI.Controllers
         // GET: Question/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.connectedUserId = connectedUserId;
             t_question question = questionService.GetById(id);
 
             return View(question);
@@ -53,7 +70,7 @@ namespace GUI.Controllers
             if (ModelState.IsValid)
             {
                 t.date = DateTime.Now;
-                t.patient_userId = userId;
+                t.patient_userId =  connectedUserId;
 
                 questionService.AddQuestion(t);
                 return RedirectToAction("Index");
@@ -75,7 +92,7 @@ namespace GUI.Controllers
         [HttpPost]
         public ActionResult Edit(t_question question)
         {
-
+            
 
             if (ModelState.IsValid)
             { 
@@ -147,5 +164,17 @@ namespace GUI.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+
+        public PartialViewResult GetLinks()
+        {
+
+            return PartialView();
+        }
+
+
+
+
     }
 }
