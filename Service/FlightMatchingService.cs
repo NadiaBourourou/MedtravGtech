@@ -1,4 +1,4 @@
-ï»¿using Data.Infrastructure;
+using Data.Infrastructure;
 using Data.Models;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace Service
         public List<string> getAllFlightsMatchingByDeparture()
         {
             return ctx.t_flightmatching.Select(r => r.departure)
-               .Distinct()//sinon on rÃ©cupÃ¨re des tables en doublon
+               .Distinct()//sinon on récupère des tables en doublon
                .ToList();
         }
 
