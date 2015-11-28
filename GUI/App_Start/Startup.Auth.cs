@@ -58,11 +58,11 @@ namespace GUI
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "834202202565-ujfcsk7e6o5f5jsfs4starpf82vpct85.apps.googleusercontent.com",
+                ClientSecret = "Xrl6Fdv3Vtr3UYPYLLTTgxNR"
+            });
         }
     }
 }

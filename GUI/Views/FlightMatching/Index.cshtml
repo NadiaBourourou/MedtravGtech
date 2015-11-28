@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Data.Models.t_flightmatching>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All our flights</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idFlightMatching)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.airline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arrival)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateFlightMatchingArr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateFlightMatchingDep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numFlight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numberOfSits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timeFlightMatchingArr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timeFlightMatchingDep)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idFlightMatching)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.airline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.arrival)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateFlightMatchingArr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateFlightMatchingDep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numFlight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numberOfSits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.timeFlightMatchingArr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.timeFlightMatchingDep)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.idFlightMatching }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.idFlightMatching }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.idFlightMatching })
+        </td>
+    </tr>
+}
+
+</table>

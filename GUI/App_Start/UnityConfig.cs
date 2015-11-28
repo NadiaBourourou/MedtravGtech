@@ -43,7 +43,7 @@ namespace GUI.App_Start
             container.RegisterType<IFlightService, FlightService>(new PerRequestLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());
             container.RegisterType<IFlightRepository, FlightRepository>(new PerRequestLifetimeManager());
-            container.RegisterType<IFlightMatchingRepository, IFlightMatchingRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IFlightMatchingRepository, FlightMatchingRepository>(new PerRequestLifetimeManager());
             container.RegisterType<IDatabaseFactory, DatabaseFactory>(new PerRequestLifetimeManager());
             container.RegisterType<ITestimonyService, TestimonyService>(new PerRequestLifetimeManager());
             container.RegisterType<ITestimonyRepository, TestimonyRepository>(new PerRequestLifetimeManager());
@@ -53,6 +53,7 @@ namespace GUI.App_Start
             container.RegisterType<IHotelService, HotelService>(new PerRequestLifetimeManager());
             container.RegisterType<IFavoriteService, FavoriteService>(new PerRequestLifetimeManager());
             container.RegisterType<ITipService, TipService>(new PerRequestLifetimeManager());
+            container.RegisterType<IFlightMatchingService, FlightMatchingService>(new PerRequestLifetimeManager());
         }
     }
 }

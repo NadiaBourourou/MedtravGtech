@@ -26,5 +26,10 @@ namespace GUI.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }

@@ -18,25 +18,25 @@ namespace Data.Models
         [Display(Name = "Arrival date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Required]
+        [Required(ErrorMessage = "The arrival date is required")]
         public string arrivalDate { get; set; }
 
         [Display(Name = "To")]
-        [Required]
+        [Required(ErrorMessage = "The arrival location is required")]
         public string arrivalLocation { get; set; }
 
         [Display(Name = "Departure date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Required]
+        [Required(ErrorMessage = "The departure date is required")]
         public string departureDate { get; set; }
 
         [Display(Name = "From")]
-        [Required]
+        [Required(ErrorMessage = "The departure location is required")]
         public string departureLocation { get; set; }
 
         [Display(Name = "Number of sits")]
-        [Required]
+        [Required(ErrorMessage = "The number of sits is required")]
         public Nullable<int> nbSits { get; set; }
         public string numFlight { get; set; }
         public Nullable<double> price { get; set; }

@@ -2,68 +2,93 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idTip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.liked)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.disliked)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idPatientVoted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.administrator_userId)
-        </th>
-        <th></th>
-    </tr>
+@*@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idTip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.liked)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.disliked)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idPatientVoted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.administrator_userId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.idTip }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idTip }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.idTip })
-        </td>
-    </tr>
-}
+<div id="monTab">
+    <h2>Tips - Informations</h2>
 
-</table>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <br />
+    <br />
+    <table border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tipId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.liked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.disliked)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.idPatientVoted)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.administrator_userId)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.body)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.liked)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.disliked)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.idPatientVoted)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.administrator_userId)
+                </td>
+                <td>
+                    <div style="color:blue;   padding:40px;">
+                       
+                        @Html.ActionLink("Details", "Details", new { id = item.tipId }) <br /><br />
+
+@{  if (item.administrator_userId == ViewBag.connectedAdminId )
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = item.tipId }) <br /><br />
+        @Html.ActionLink("Delete", "Delete", new { id = item.tipId })<br /><br />
+    }
+    }
+           
+   @{  if (ViewBag.connectedPatientId != 0)
+       {
+                        @Html.ActionLink("Like", "Appreciate", new { id = item.tipId })<br /><br />
+                        @Html.ActionLink("Dislike", "Dislike", new { id = item.tipId })<br/><br />
+                        @*@Html.ActionLink("Add to my favorite tips", "AddToMyFav", new { id = item.tipId })*@
+           }
+       }
+                   </div>
+               </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -15,12 +15,15 @@ namespace Data.Models
         }
 
        
-        public int idTip { get; set; }
+        public int tipId { get; set; }
 
-        [Required]
+        [Display(Name = "Title")]
+        [Required(ErrorMessage = "The title is required")]
         public string title { get; set; }
 
-        [Required]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Body")]
+        [Required(ErrorMessage = "The body is required")]
         public string body { get; set; }
         public int liked { get; set; }
         public int disliked { get; set; }
