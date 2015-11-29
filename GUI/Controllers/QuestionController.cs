@@ -34,11 +34,11 @@ namespace GUI.Controllers
           
             if (optionChoisie == "Title")
             {
-                allQuestions = allQuestions.Where(s => s.title.Contains(searchTextBox) || searchTextBox == null).ToList();
+                allQuestions = allQuestions.Where(s => s.title.ToLower().Contains(searchTextBox.ToLower()) || searchTextBox == null).ToList();
             }
             else
             {
-                allQuestions = allQuestions.Where(s => s.description.Contains(searchTextBox) || searchTextBox == null).ToList();
+                allQuestions = allQuestions.Where(s => s.description.ToLower().Contains(searchTextBox.ToLower()) || searchTextBox == null).ToList();
             }
 
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
@@ -174,7 +174,10 @@ namespace GUI.Controllers
         }
 
 
-
+        public ActionResult Chat()
+        {
+            return View();
+        }
 
     }
 }

@@ -30,11 +30,11 @@ namespace GUI.Controllers
            
             if (optionChoisie == "Title")
             {
-               allTestimonies = allTestimonies.Where(s => s.title.Contains(searchTextBox) || searchTextBox == null).ToList();
+               allTestimonies = allTestimonies.Where(s => s.title.ToLower().Contains(searchTextBox.ToLower()) || searchTextBox == null).ToList();
             }
             else 
             {
-                allTestimonies = allTestimonies.Where(s => s.description.Contains(searchTextBox) || searchTextBox == null).ToList();
+                allTestimonies = allTestimonies.Where(s => s.description.ToLower().Contains(searchTextBox.ToLower()) || searchTextBox == null).ToList();
             }
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
             var onePageOfProducts = allTestimonies.ToPagedList(pageNumber, 4); // will only contain 4 testimonies max because of the pageSize
