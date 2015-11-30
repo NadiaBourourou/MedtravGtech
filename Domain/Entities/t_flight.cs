@@ -12,7 +12,6 @@ namespace Data.Models
             this.t_booking = new List<t_booking>();
         }
 
-        [Display(Name = "Flight ID")]
         public int flightId { get; set; }
 
         [Display(Name = "Airline")]
@@ -53,8 +52,6 @@ namespace Data.Models
 
         [Display(Name = "Depature time")]
         public string timeFlightMatchingDep { get; set; }
-
-        [Display(Name = "Patient ID")]
         public Nullable<int> patient_userId { get; set; }
         public virtual ICollection<t_booking> t_booking { get; set; }
         public virtual t_user t_user { get; set; }

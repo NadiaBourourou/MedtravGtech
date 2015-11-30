@@ -7,8 +7,6 @@ namespace Data.Models
 {
     public partial class t_flightmatching
     {
-
-        [Display(Name = "Flight ID")]
         public int idFlightMatching { get; set; }
 
         [Display(Name = "Airline")]

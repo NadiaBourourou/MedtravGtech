@@ -376,6 +376,14 @@
     <Content Include="Views\Tip\Like.cshtml" />
     <Content Include="Views\Tip\Appreciate.cshtml" />
     <Content Include="Views\Question\GetLinks.cshtml" />
+    <Content Include="Views\Flight\Add.cshtml" />
+    <Content Include="Views\Flight\Add2Affichage.cshtml" />
+    <Content Include="Views\Flight\AddFlight1.cshtml" />
+    <Content Include="Views\Flight\DeleteMYflight.cshtml" />
+    <Content Include="Views\Flight\Details.cshtml" />
+    <Content Include="Views\Flight\DetailsOfMYflight.cshtml" />
+    <Content Include="Views\Flight\Index.cshtml" />
+    <Content Include="Views\Flight\IndexOfMYflights.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -383,6 +391,7 @@
     <Folder Include="Content\mytemplate\fonts\" />
     <Folder Include="Content\mytemplate\js\" />
     <Folder Include="css\images\" />
+    <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

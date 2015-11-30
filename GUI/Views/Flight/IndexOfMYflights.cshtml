@@ -12,9 +12,9 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-                @Html.DisplayNameFor(model => model.flightId)
-            </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.idFlightMatching)
+            </th>*@
 
         <th>
             @Html.DisplayNameFor(model => model.numFlight)
@@ -60,9 +60,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                    @Html.DisplayFor(modelItem => item.flightId)
-                </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.idFlightMatching)
+                </td>*@
 
             <td>
                 @Html.DisplayFor(modelItem => item.numFlight)

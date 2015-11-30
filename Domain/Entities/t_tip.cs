@@ -15,7 +15,7 @@ namespace Data.Models
         }
 
 
-        [Display(Name = "Tip ID")]
+        [Display(Name = "Tip Id")]
         public int tipId { get; set; }
 
         [Display(Name = "Title")]
@@ -32,11 +32,9 @@ namespace Data.Models
 
         [Display(Name = "Number of dislike")]
         public int disliked { get; set; }
-
-        [Display(Name = "Patient ID")]
         public Nullable<int> idPatientVoted { get; set; }
 
-        [Display(Name = "Administrator ID")]
+        [Display(Name = "Administrator Id")]
         public Nullable<int> administrator_userId { get; set; }
         public virtual t_user t_user { get; set; }
         public virtual ICollection<t_favorite> favorites { get; set; }
