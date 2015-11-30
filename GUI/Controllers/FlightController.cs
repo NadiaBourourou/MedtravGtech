@@ -17,7 +17,7 @@ namespace GUI.Controllers
         IFlightService flightService;
         IFlightMatchingService flightMatchingService;
 
-        int userId = 1;
+        int patientId = 1;
 
         public FlightController(IFlightService flightService, IFlightMatchingService flightMatchingService)
         {
@@ -26,16 +26,16 @@ namespace GUI.Controllers
         }
 
         // GET: Flight
-        public ActionResult Index()
+        public ActionResult IndexOfMYflights()
         {
-            var allFlights = flightService.getAllFlights();
-            return View(allFlights);
+            var allMYFlights = flightService.getAllFlightsOfThatPatient(patientId);
+            return View(allMYFlights);
         }
 
         // GET: Flight/Details/5
         public ActionResult Details(int id)
         {
-            t_flight flight = flightService.GetById(id);
+            t_flightmatching flight = flightMatchingService.GetById(id);
             return View(flight);
         }
 
@@ -48,82 +48,82 @@ namespace GUI.Controllers
         // POST: Flight/Create
 
         [HttpPost]
-        public ActionResult Create(t_flight flight)
-        {
-            medtravdbContext db = new medtravdbContext();
-            ViewBag.DropDownValuesDeparture = new SelectList(db.t_flightmatching, "idFlightMatching", "departure");
-            ViewBag.DropDownValuesArrival = new SelectList(db.t_flightmatching, "idFlightMatching", "arrival");
+        //public ActionResult Create(t_flight flight)
+        //{
+        //    medtravdbContext db = new medtravdbContext();
+        //    ViewBag.DropDownValuesDeparture = new SelectList(db.t_flightmatching, "idFlightMatching", "departure");
+        //    ViewBag.DropDownValuesArrival = new SelectList(db.t_flightmatching, "idFlightMatching", "arrival");
 
 
-            if (ModelState.IsValid)
-            {
-                flight.patient_userId = userId;
+        //    if (ModelState.IsValid)
+        //    {
+        //        flight.patient_userId = userId;
 
-                flightService.AddFlight(flight);
-                return RedirectToAction("Index");
-            }
+        //        flightService.AddFlight(flight);
+        //        return RedirectToAction("Index");
+        //    }
 
-            // SelectList flights = new SelectList(new[] { "Abidjan - Port Bouet Airport (ABJ)", "Paris - Paris Charles-de-Gaulle (CDG)", "Malte - Malta International Airport (MLA)" });
+        //    // SelectList flights = new SelectList(new[] { "Abidjan - Port Bouet Airport (ABJ)", "Paris - Paris Charles-de-Gaulle (CDG)", "Malte - Malta International Airport (MLA)" });
 
 
-            return View();
-        }
+        //    return View();
+        //}
 
 
         // GET: Flight/Edit/5
-        public ActionResult Edit(int id)
-        {
-            t_flight flight = flightService.GetById(id);
-            return View(flight);
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    t_flight flight = flightService.GetById(id);
+        //    return View(flight);
+        //}
 
-        // POST: Flight/Edit/5
-        [HttpPost]
-        public ActionResult Edit(t_flight flight)
-        //int id, FormCollection collection
-        {
-            if (ModelState.IsValid)
-            {
-                flightService.UpdateFlight(flight);
+        //// POST: Flight/Edit/5
+        //[HttpPost]
+        //public ActionResult Edit(t_flight flight)
+        ////int id, FormCollection collection
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        flightService.UpdateFlight(flight);
 
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        return View();
+        //    }
+        //}
 
-        // GET: Flight/Delete/5
-        public ActionResult Delete(int id, bool? saveChangesError)
-        {
-            if (saveChangesError.GetValueOrDefault())
-            {
-                ViewBag.ErrorMessage = "Unable to save changes. Please try again.";
-            }
+        //// GET: Flight/Delete/5
+        //public ActionResult Delete(int id, bool? saveChangesError)
+        //{
+        //    if (saveChangesError.GetValueOrDefault())
+        //    {
+        //        ViewBag.ErrorMessage = "Unable to save changes. Please try again.";
+        //    }
 
-            t_flight flight = flightService.GetById(id);
-            return View(flight);
-        }
+        //    t_flight flight = flightService.GetById(id);
+        //    return View(flight);
+        //}
 
-        // POST: Flight/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                t_flight flight = flightService.GetById(id);
-                flightService.DeleteFlight(flight);
-            }
-            catch (DataException)
-            {
-                return RedirectToAction("Delete",
-                new System.Web.Routing.RouteValueDictionary {
-        { "id", id },
-        { "saveChangesError", true } });
-            }
-            return RedirectToAction("Index");
-        }
+        //// POST: Flight/Delete/5
+        //[HttpPost]
+        //public ActionResult Delete(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        t_flight flight = flightService.GetById(id);
+        //        flightService.DeleteFlight(flight);
+        //    }
+        //    catch (DataException)
+        //    {
+        //        return RedirectToAction("Delete",
+        //        new System.Web.Routing.RouteValueDictionary {
+        //{ "id", id },
+        //{ "saveChangesError", true } });
+        //    }
+        //    return RedirectToAction("Index");
+        //}
 
         public ActionResult Ajout()
         {
@@ -246,8 +246,192 @@ namespace GUI.Controllers
 
 
 
+        //public ActionResult AddMyFlight(string MyDrownDown1, string MyDrownDown2)
+        //{
+        //    //ViewBag.connectedAdminId = adminId;
+        //    //ViewBag.connectedPatientId = patientId;
+
+        //    var allFlightsMatching = flightMatchingService.getAllFlightsMatching();
+
+        //   /* if (optionChoisie == "Title")
+        //    {
+        //        allFlightsMatching = allFlightsMatching.Where(s => s.title.Contains(searchTextBox) || searchTextBox == null).ToList();
+        //    }
+        //    else
+        //    {
+        //        allFlightsMatching = allFlightsMatching.Where(s => s.body.Contains(searchTextBox) || searchTextBox == null).ToList();
+        //    }
+        //    */
+
+
+        //    ////////////////////////////////////////////////////////////////////////////
+
+        //    List<t_flightmatching> flightMatchings = flightMatchingService.getAllFlightsMatching();
+
+        //    List<string> listFlightMatchingOrderedByDepartures = flightMatchings.Select(f=>f.departure).Distinct().ToList();
+        //    List<string> listFlightMatchingOrderedByArrivals = flightMatchings.Select(f => f.arrival).Distinct().ToList();
+        //    // List<t_flightmatching> listFlightMatchingOrderedByArrivals = flightMatchings.OrderBy(f => f.arrival).Distinct().ToList();
+
+
+        //    List<SelectListItem> listItemDeparture = new List<SelectListItem>();
+        //    List<SelectListItem> listItemArrival = new List<SelectListItem>();
+
+        //    foreach (string t in listFlightMatchingOrderedByDepartures)
+        //    {
+        //        listItemDeparture.Add(new SelectListItem() { Value = t, Text = t.ToString() });
+        //    }
+
+        //    foreach (string t in listFlightMatchingOrderedByArrivals)
+        //    {
+        //        listItemArrival.Add(new SelectListItem() { Value = t, Text = t.ToString() });
+        //    }
+
+        //    ViewBag.DropDownValuesDeparture = new SelectList(listItemDeparture, "Text", "Value");
+        //    ViewBag.DropDownValuesArrival = new SelectList(listItemArrival, "Text", "Value");
+
+        //    int a = (Int32.Parse(MyDrownDown1));
+
+        //    return View(allFlightsMatching);
+
+        //}
+
+        public ActionResult Index(string searchTextBoxDeparture = "", string searchTextBoxArrival = "")
+        {//string optionChoisie = "", 
+            var allFlightsMatching = flightMatchingService.getAllFlightsMatching();
+
+            //if (optionChoisie == "DepartureLocation")
+            //{
+            //    allFlightsMatching = allFlightsMatching.Where(s => s.departure.ToLower().Contains(searchTextBoxDeparture.ToLower()) || searchTextBoxDeparture == null).ToList();
+            //}
+            //else
+            //{
+            //    allFlightsMatching = allFlightsMatching.Where(s => s.arrival.ToLower().Contains(searchTextBoxArrival.ToLower()) || searchTextBoxArrival == null).ToList();
+            //}
+
+            
+
+            if (searchTextBoxArrival != "" && searchTextBoxDeparture != "")
+            {
+                allFlightsMatching = flightMatchingService.getAllFlightsMatchingByDepartureAndArrival(searchTextBoxDeparture, searchTextBoxArrival);
+            }
+
+            if (searchTextBoxArrival == "" && searchTextBoxDeparture == "")
+            {
+                allFlightsMatching = flightMatchingService.getAllFlightsMatching();
+            }
+
+            if (searchTextBoxArrival != "" && searchTextBoxDeparture == "")
+            {
+                allFlightsMatching = allFlightsMatching.Where(s => s.arrival.ToLower().Contains(searchTextBoxArrival.ToLower())).ToList();
+            }
+
+            if (searchTextBoxArrival == "" && searchTextBoxDeparture != "")
+            {
+                allFlightsMatching = allFlightsMatching.Where(s => s.departure.ToLower().Contains(searchTextBoxDeparture.ToLower())).ToList();
+            }
+
+          //  String da = ReleaseDate.ToString();
+
+
+            return View(allFlightsMatching);
+        }
 
 
 
+       // GET: Flight/Add/5
+        public ActionResult Add(int id)
+        {
+            t_flightmatching flightMatching = flightMatchingService.GetById(id);
+            return View(flightMatching);
+        }
+
+        // POST: Flight/Add/5
+        [HttpPost]
+        public ActionResult Add(t_flightmatching flightMatching)
+        //int id, FormCollection collection
+        {
+            if (ModelState.IsValid)
+            {
+
+  /* airline 
+     arrivalDate 
+     arrivalLocation
+     departureDate
+     departureLocation 
+     nbSits 
+     numFlight 
+     price 
+     timeFlightMatchingArr 
+     timeFlightMatchingDep
+      patient_userId 
+  */
+
+                t_flight myFlight = new t_flight();
+                myFlight.patient_userId = patientId;
+
+    
+                myFlight.arrivalDate = flightMatching.dateFlightMatchingArr;
+                myFlight.arrivalLocation = flightMatching.arrival;
+                myFlight.timeFlightMatchingArr = flightMatching.timeFlightMatchingArr;
+
+                myFlight.departureDate = flightMatching.dateFlightMatchingDep;
+                myFlight.departureLocation = flightMatching.departure;
+                myFlight.timeFlightMatchingDep = flightMatching.timeFlightMatchingDep;
+
+                myFlight.airline = flightMatching.airline;
+                myFlight.numFlight = flightMatching.numFlight;
+                myFlight.price = flightMatching.price;
+                myFlight.nbSits = 1;
+
+                flightService.AddFlight(myFlight);
+
+                return RedirectToAction("IndexOfMYflights");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+        // GET: Flight/Details/5
+        public ActionResult DetailsOfMYflight(int id)
+        {
+            t_flight flight = flightService.GetMYflightDetails(id,patientId);
+            return View(flight);
+        }
+
+        
+
+        // GET: Flight/Delete/5
+        public ActionResult DeleteMYflight(int id, bool? saveChangesError)
+        {
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Unable to save changes. Please try again.";
+            }
+
+            t_flight flight = flightService.GetById(id);
+            return View(flight);
+        }
+
+        // POST: Flight/Delete/5
+        [HttpPost]
+        public ActionResult DeleteMYflight(int id, FormCollection collection)
+        {
+            try
+            {
+                t_flight flight = flightService.GetById(id);
+                flightService.DeleteFlight(flight);
+            }
+            catch (DataException)
+            {
+                return RedirectToAction("Delete",
+                new System.Web.Routing.RouteValueDictionary {
+        { "id", id },
+        { "saveChangesError", true } });
+            }
+            return RedirectToAction("IndexOfMYflights");
+        }
     }
 }

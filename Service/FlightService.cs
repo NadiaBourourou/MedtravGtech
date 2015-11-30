@@ -10,6 +10,8 @@ namespace Service
 {
     public class FlightService : IFlightService
     {
+        medtravdbContext ctx = null;
+
         static public DatabaseFactory dbFactory = null; 
         UnitOfWork utwk = null; 
 
@@ -17,6 +19,8 @@ namespace Service
         {
             dbFactory= new DatabaseFactory();
             utwk= new UnitOfWork(dbFactory);
+
+            ctx = new medtravdbContext();
         }
         public void AddFlight(t_flight f)
         {
@@ -46,6 +50,31 @@ namespace Service
             utwk.FlightRepository.Update(t);
             utwk.Commit();
         }
+
+        public List<t_flight> getAllFlightsOfThatPatient(int idPatient)
+        {
+            return ctx.t_flight.Where(r => r.patient_userId == idPatient).ToList();
+        }
+
+        public t_flight GetMYflightDetails(int id, int patientId)
+        {
+            List<t_flight> listeTsLesFlights = utwk.FlightRepository.GetAll().ToList();
+            t_flight myFlightFound = new t_flight();
+
+            foreach (t_flight f in listeTsLesFlights)
+            {
+
+                if (f.flightId == id && f.patient_userId == patientId)
+
+                {
+                    myFlightFound = f;
+
+                }
+            }
+
+            return myFlightFound;
+
+        }
     }
 
     public interface IFlightService
@@ -55,6 +84,12 @@ namespace Service
         t_flight GetById(long id);
         void DeleteFlight(t_flight t);
         void UpdateFlight(t_flight t);
+
+        List<t_flight> getAllFlightsOfThatPatient(int idPatient);
+
+        t_flight GetMYflightDetails(int id, int patientId);
     }
+
+
 
 }

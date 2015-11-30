@@ -1,101 +1,186 @@
-﻿@model IEnumerable<Data.Models.t_flight>
+﻿@model IEnumerable<Data.Models.t_flightmatching>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Add a flight";
 }
 
-<h2>Flights</h2>
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    @Html.ActionLink("Create New", "Ajout2")
+@*<link type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3.jquery-ui.js"></script>*@
 
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.flightId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.airline)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.arrivalDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.arrivalLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.departureDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.departureLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nbSits)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numFlight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.timeFlightMatchingArr)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.timeFlightMatchingDep)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.patient_userId)
-        </th>
-        <th></th>
-    </tr>
+@*<head>
+    <script src="~/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="~/js/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript"></script>
+</head>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.flightId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.airline)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.arrivalDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.arrivalLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.departureDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.departureLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nbSits)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numFlight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.timeFlightMatchingArr)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.timeFlightMatchingDep)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.patient_userId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.flightId  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.flightId }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.flightId })
-        </td>
-    </tr>
-}
+<body>
+    @section featured{
+        <section class="featured">
+            <div class="content-wrapper">
+                <hgroup class="title">
+                    <h1>@ViewBag.Title</h1>
+                    <h2>@ViewBag.Message</h2>
 
-</table>
+                </hgroup>
+                <p>
+                    <input type="text" id="MyDate" />
+                </p>
+            </div>
+        </section>
+
+
+    }*@
+
+
+    @*<script type="text/javascript">
+
+        $(function () {
+            $('#MyDate').datepicker();
+        });
+
+    </script>*@
+    <h2>Available flights</h2>
+<br/>
+<br />
+
+    @using (Html.BeginForm("Index", "Flight", FormMethod.Get))
+    {
+        //the following are search options
+        <b> Search Option: </b>
+        <text>Departure location</text>
+        @Html.TextBox("searchTextBoxDeparture")
+
+        <text> Arrival location </text>
+        @Html.TextBox("searchTextBoxArrival")
+
+
+        <input type="submit" name="submit" value="Search" />
+    }
+
+    <br />
+    <br />
+    <br />
+
+
+    <p>
+        @Html.ActionLink("See my reserved flights", "IndexOfMYflights")
+    </p>
+
+    <br />
+    <br />
+
+    @if (Model.Count() == 0)
+            {
+        <tr>
+            <td colspan="3">  <center><b style="color:coral">Sorry, records not found </b></center></td>
+        </tr>
+        <br />
+        <br />
+    }
+    else
+    {
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idFlightMatching)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.numFlight)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.airline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.departure)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.dateFlightMatchingDep)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.timeFlightMatchingDep)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.arrival)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dateFlightMatchingArr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.timeFlightMatchingArr)
+                </th>
+
+
+                @*<th>
+                        @Html.DisplayNameFor(model => model.numberOfSits)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idFlightMatching)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.numFlight)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.airline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.departure)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dateFlightMatchingDep)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.timeFlightMatchingDep)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.arrival)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dateFlightMatchingArr)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.timeFlightMatchingArr)
+                    </td>
+
+
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.numberOfSits)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+
+
+                    <td>
+                        @Html.ActionLink("Add", "Add", new {  id=item.idFlightMatching  }) 
+                        @Html.ActionLink("Details", "Details", new {  id=item.idFlightMatching  }) 
+                        @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+

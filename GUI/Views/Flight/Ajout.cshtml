@@ -4,6 +4,33 @@
     ViewBag.Title = "Ajout";
 }
 
+<link type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+<script src="http://code.jquery.com/ui/1.10.3.jquery-ui.js"></script>
+
+@section featured{
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                <h2>@ViewBag.Message</h2>
+
+            </hgroup>
+            <p>
+                <input type="text" id="MyDate"/>
+            </p>
+        </div>
+    </section>
+    
+    
+    }
+
 <h2>Choose a flight</h2>
 
-@Html.DropDownList("MyDrownDown",(SelectList)ViewBag.DropDownValues)
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#MyDate').datepicker();
+    });
+
+</script>

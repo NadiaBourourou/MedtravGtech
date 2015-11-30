@@ -20,14 +20,35 @@ namespace GUI.Controllers
             this.tipService = tipService;
         }
 
+
+        //public ActionResult Index() //without research
+        //{
+        //    ViewBag.connectedAdminId = adminId;
+        //    ViewBag.connectedPatientId = patientId;
+
+        //    var allTips = tipService.GetAllTips();
+        //    return View(allTips);
+        //}
+
         // GET: Tip
-        public ActionResult Index()
+        public ActionResult Index(string optionChoisie = "", string searchTextBox = "")
         {
             ViewBag.connectedAdminId = adminId;
             ViewBag.connectedPatientId = patientId;
 
             var allTips = tipService.GetAllTips();
+
+            if (optionChoisie == "Title")
+            {
+                allTips = allTips.Where(s => s.title.ToLower().Contains(searchTextBox.ToLower()) || searchTextBox == null).ToList();
+            }
+            else
+            {
+                allTips = allTips.Where(s => s.body.ToLower().Contains(searchTextBox.ToLower()) || searchTextBox == null).ToList();
+            }
+
             return View(allTips);
+
         }
 
         // GET: Tip/Details/5

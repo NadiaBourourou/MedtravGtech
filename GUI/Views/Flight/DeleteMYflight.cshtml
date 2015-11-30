@@ -1,21 +1,22 @@
-﻿@model Data.Models.t_flightmatching
+﻿@model Data.Models.t_flight
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "DeleteMYflight";
 }
 
-<h2>Details</h2>
+<h2>Delete my flight</h2>
 
+<h3>Are you sure you want to cancel this flight?</h3>
 <div>
-    <h4>Flights</h4>
+    <h4>Flight</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.idFlightMatching)
+            @Html.DisplayNameFor(model => model.flightId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idFlightMatching)
+            @Html.DisplayFor(model => model.flightId)
         </dd>
 
         <dt>
@@ -35,19 +36,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.departure)
+            @Html.DisplayNameFor(model => model.departureLocation)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.departure)
+            @Html.DisplayFor(model => model.departureLocation)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.dateFlightMatchingDep)
+            @Html.DisplayNameFor(model => model.departureDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.dateFlightMatchingDep)
+            @Html.DisplayFor(model => model.departureDate)
         </dd>
 
 
@@ -61,20 +62,20 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.arrival)
+            @Html.DisplayNameFor(model => model.arrivalLocation)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.arrival)
+            @Html.DisplayFor(model => model.arrivalLocation)
         </dd>
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.dateFlightMatchingArr)
+            @Html.DisplayNameFor(model => model.arrivalDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.dateFlightMatchingArr)
+            @Html.DisplayFor(model => model.arrivalDate)
         </dd>
 
         <dt>
@@ -101,12 +102,14 @@
             @Html.DisplayFor(model => model.price)
         </dd>
 
-
-
-
-
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Cancel" class="btn btn-default" />
+            @Html.ActionLink("Back to the list of my flights", "IndexOfMYflights")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>

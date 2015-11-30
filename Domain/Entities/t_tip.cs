@@ -15,7 +15,7 @@ namespace Data.Models
         }
 
 
-        [Display(Name = "Tip Id")]
+        [Display(Name = "Tip ID")]
         public int tipId { get; set; }
 
         [Display(Name = "Title")]
@@ -23,8 +23,8 @@ namespace Data.Models
         public string title { get; set; }
 
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Body")]
-        [Required(ErrorMessage = "The body is required")]
+        [Display(Name = "Description")]
+        [Required(ErrorMessage = "The description is required")]
         public string body { get; set; }
 
         [Display(Name = "Number of like")]
@@ -32,9 +32,11 @@ namespace Data.Models
 
         [Display(Name = "Number of dislike")]
         public int disliked { get; set; }
+
+        [Display(Name = "Patient ID")]
         public Nullable<int> idPatientVoted { get; set; }
 
-        [Display(Name = "Administrator Id")]
+        [Display(Name = "Administrator ID")]
         public Nullable<int> administrator_userId { get; set; }
         public virtual t_user t_user { get; set; }
         public virtual ICollection<t_favorite> favorites { get; set; }

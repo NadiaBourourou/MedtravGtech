@@ -90,18 +90,42 @@ namespace Service
 
         }
 
+        public List<t_flightmatching> getAllFlightsMatchingByDepartureAndArrival(string depRech, string arrRech)
+        {
+            List<t_flightmatching> listeAmaj = new List<t_flightmatching>();
+            List<t_flightmatching> listeTsLesFlights = utwk.FlightMatchingRepository.GetAll().ToList();
+
+            foreach (t_flightmatching f in listeTsLesFlights)
+            {
+                // if (f.departure == dep && f.arrival == arr && f.dateFlightMatchingDep == dateDep && f.dateFlightMatchingArr == dateArr)
+                if (f.departure.ToLower().Contains(depRech.ToLower()) && f.arrival.ToLower().Contains(arrRech.ToLower()))
+
+                {
+                    listeAmaj.Add(f);
+
+                }
+            }
+            return listeAmaj;
+        }
+
     }
+        //return ctx.t_flightmatching.Select(r => r.departure)
+        //       .Distinct()//sinon on récupère des tables en doublon
+        //       .ToList();
 
-    public interface IFlightMatchingService
-    {
-        void AddFlightMatching(t_flightmatching tf);
-        List<t_flightmatching> getAllFlightsMatching();
-        t_flightmatching GetById(long id);
-        void DeleteFlightMatching(t_flightmatching t);
-        void UpdateFlightMatching(t_flightmatching t);
+        public interface IFlightMatchingService
+        {
+            void AddFlightMatching(t_flightmatching tf);
+            List<t_flightmatching> getAllFlightsMatching();
+            t_flightmatching GetById(long id);
+            void DeleteFlightMatching(t_flightmatching t);
+            void UpdateFlightMatching(t_flightmatching t);
 
-        List<string> getAllFlightsMatchingByDeparture();
-        List<t_flightmatching> addList(string flightDepartureSelectionne, string flightArrivalSelectionne, t_flightmatching flight);
+            List<string> getAllFlightsMatchingByDeparture();
+            List<t_flightmatching> addList(string flightDepartureSelectionne, string flightArrivalSelectionne, t_flightmatching flight);
+
+            List<t_flightmatching> getAllFlightsMatchingByDepartureAndArrival(string depRech, string arrRech);
 
     }
+   
 }
