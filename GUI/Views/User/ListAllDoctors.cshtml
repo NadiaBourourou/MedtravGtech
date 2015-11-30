@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Data.Models.t_user>
+
+@{
+    ViewBag.Title = "ListAllDoctors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListAllDoctors</h2>
+
+<p>
+ @if (Session["userId"] != null)
+ {
+
+    <h4>Hello  @Session["login"].ToString() </h4>
+ }
+
+      
+</p>
+ 
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+    <th>
+            @Html.Label("Specialty")
+        </th>
+        <th>
+            @Html.Label("Description")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.specialty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+
+        <td>
+         | @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink(
+linkText: "Book ",
+actionName: "BookDoctor",
+controllerName: "DoctorBooking",
+routeValues: new
+{
+    doctorId = item.userId,
+    userId = Convert.ToInt32(Session["userId"])
+},
+    htmlAttributes: null
+)
+        </td>
+    </tr>
+}
+
+</table>

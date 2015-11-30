@@ -1,0 +1,88 @@
+﻿@model Data.Models.t_hotel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h2>Details</h2>
+
+<div>
+    <h4>t_hotel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hotelId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hotelId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priceSingle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priceSingle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priceSuite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priceSuite)
+        </dd>
+
+     
+
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.ImgName)
+        </dt>*@
+
+        <dd>
+            @*@Html.CustomImage("/Upload/coucou.png", "Image", 150, 100)*@
+            @*<img src="@Url.Content(model => model.ImgName)" alt="" />*@
+            <img src="~/Upload/@Html.DisplayFor(model =>model.ImgName)" style="height:200px;width:200px;" />
+
+        </dd>
+      
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.hotelId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

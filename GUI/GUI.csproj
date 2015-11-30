@@ -257,24 +257,44 @@
       <DependentUpon>Chart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClinicBookingController.cs" />
+    <Compile Include="Controllers\ClinicController.cs" />
+    <Compile Include="Controllers\DoctorBookingController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\FlightMatchingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelBookingController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedicalRecordsController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\ServiceHotelController.cs" />
+    <Compile Include="Controllers\SurgeryBookingController.cs" />
+    <Compile Include="Controllers\SurgeryController.cs" />
     <Compile Include="Controllers\TestimonyController.cs" />
     <Compile Include="Controllers\TipController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Migrations\201511301516202_integration1.cs" />
+    <Compile Include="Migrations\201511301516202_integration1.Designer.cs">
+      <DependentUpon>201511301516202_integration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\User\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Chart\Chart.aspx" />
@@ -290,6 +310,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\cool.png" />
+    <Content Include="Images\dd.png" />
+    <Content Include="Images\gg.png" />
+    <Content Include="Images\good.png" />
+    <Content Include="Images\hi.png" />
+    <Content Include="Images\sad.png" />
+    <Content Include="Images\shut.png" />
+    <Content Include="Images\smile.png" />
+    <Content Include="Images\tongue.png" />
+    <Content Include="js\jquery-1.7.1.min.js" />
+    <Content Include="js\jquery-ui-1.8.17.custom.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -305,9 +336,16 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Upload\12003953_725152407612606_3945550521548834012_n.png.jpg" />
+    <Content Include="Upload\300px-JPEG_example_flower.jpg" />
+    <Content Include="Upload\coucou.png" />
+    <Content Include="Upload\hotel services.jpg" />
     <Content Include="Video\questions.mp3" />
     <Content Include="Video\testimonials.mp3" />
     <Content Include="Video\video.mp4" />
+    <Content Include="Views\User\callbutton_32px.png" />
+    <Content Include="Views\User\images.jpg" />
+    <Content Include="Views\User\WebForm1.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -384,6 +422,39 @@
     <Content Include="Views\Flight\DetailsOfMYflight.cshtml" />
     <Content Include="Views\Flight\Index.cshtml" />
     <Content Include="Views\Flight\IndexOfMYflights.cshtml" />
+    <Content Include="Views\ClinicBooking\Create.cshtml" />
+    <Content Include="Views\Clinic\Create.cshtml" />
+    <Content Include="Views\Clinic\Details.cshtml" />
+    <Content Include="Views\Clinic\Index.cshtml" />
+    <Content Include="Views\Hotel\Create.cshtml" />
+    <Content Include="Views\Hotel\Delete.cshtml" />
+    <Content Include="Views\Hotel\Details.cshtml" />
+    <Content Include="Views\Hotel\Edit.cshtml" />
+    <Content Include="Views\Hotel\IndexPatient.cshtml" />
+    <Content Include="Views\HotelBooking\Create.cshtml" />
+    <Content Include="Views\MedicalRecords\Create.cshtml" />
+    <Content Include="Views\MedicalRecords\Details.cshtml" />
+    <Content Include="Views\MedicalRecords\Edit.cshtml" />
+    <Content Include="Views\MedicalRecords\Index.cshtml" />
+    <Content Include="Views\ServiceHotel\Delete.cshtml" />
+    <Content Include="Views\ServiceHotel\IndexServiceHotel.cshtml" />
+    <Content Include="Views\Surgery\Index.cshtml" />
+    <Content Include="Views\User\AdminCreatesDoctor.cshtml" />
+    <Content Include="Views\User\AdminDisplaysDetailsDoctor.cshtml" />
+    <Content Include="Views\User\AdminEditsDoctor.cshtml" />
+    <Content Include="Views\User\AdminLoggedIn.cshtml" />
+    <Content Include="Views\User\AdminManageDoctors.cshtml" />
+    <Content Include="Views\User\DoctorLoggedIn.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\IndexAuthentifiee.cshtml" />
+    <Content Include="Views\User\ListAllDoctors.cshtml" />
+    <Content Include="Views\User\LoggedIn.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\PatientLoggedIn.cshtml" />
+    <Content Include="Views\User\PDF.cshtml" />
+    <Content Include="Views\User\PdfSharpConvert.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Flight.rar" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -414,6 +485,11 @@
       <Project>{0758f97e-9e4a-4d3a-aed7-1310509eea9c}</Project>
       <Name>Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511301516202_integration1.resx">
+      <DependentUpon>201511301516202_integration1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

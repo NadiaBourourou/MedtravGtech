@@ -5,6 +5,7 @@ using Service;
 using Data.Interfaces;
 using Data.Infrastructure;
 using Data.Repositories;
+using GUI.Controllers;
 
 namespace GUI.App_Start
 {
@@ -49,11 +50,50 @@ namespace GUI.App_Start
             container.RegisterType<ITestimonyRepository, TestimonyRepository>(new PerRequestLifetimeManager());
             container.RegisterType<IQuestionService, QuestionService>(new PerRequestLifetimeManager());
             container.RegisterType<IQuestionRepository, QuestionRepository>(new PerRequestLifetimeManager());
-            container.RegisterType<IHotelRepository, HotelRepository>(new PerRequestLifetimeManager());
-            container.RegisterType<IHotelService, HotelService>(new PerRequestLifetimeManager());
-            container.RegisterType<IFavoriteService, FavoriteService>(new PerRequestLifetimeManager());
+
             container.RegisterType<ITipService, TipService>(new PerRequestLifetimeManager());
             container.RegisterType<IFlightMatchingService, FlightMatchingService>(new PerRequestLifetimeManager());
+
+            container.RegisterType<IUserRepository, UserRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IUserService, UserService>(new PerRequestLifetimeManager());
+
+
+
+            container.RegisterType<IHotelRepository, HotelRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IHotelService, HotelService>(new PerRequestLifetimeManager());
+
+
+            container.RegisterType<IHotelBookingRepository, HotelBookingRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IHotelBookingService, HotelBookingService>(new PerRequestLifetimeManager());
+
+            container.RegisterType<IClinicBookingRepository, ClinicBookingRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IClinicBookingService, ClinicBookingService>(new PerRequestLifetimeManager());
+            container.RegisterType<IClinicRepository, ClinicRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IClinicService, ClinicService>(new PerRequestLifetimeManager());
+
+            container.RegisterType<IServiceHotelRepository, ServiceHotelRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IServiceHotelService, ServiceHotelService>(new PerRequestLifetimeManager());
+
+            container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());
+            container.RegisterType<IDatabaseFactory, DatabaseFactory>(new PerRequestLifetimeManager());
+
+            container.RegisterType<IDoctorPatientRepository, DoctorPatientRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IDoctorPatientService, DoctorPatientService>(new PerRequestLifetimeManager());
+
+            container.RegisterType<ISurgeryBookingRepository, SurgeryBookingRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<ISurgeryBookingService, SurgeryBookingService>(new PerRequestLifetimeManager());
+
+            container.RegisterType<ISurgeryRepository, SurgeryRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<ISurgeryService, SurgeryService>(new PerRequestLifetimeManager());
+
+            container.RegisterType<IMedicalRecordsRepository, MedicalRecordsRepository>(new PerRequestLifetimeManager());
+            container.RegisterType<IMedicalRecordsService, MedicalRecordsService>(new PerRequestLifetimeManager());
+
+
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
+
+
         }
     }
 }

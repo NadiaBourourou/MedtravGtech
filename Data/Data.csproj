@@ -100,16 +100,15 @@
     <Compile Include="Migrations\201511201404561_v7.Designer.cs">
       <DependentUpon>201511201404561_v7.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511242017394_v8.cs" />
-    <Compile Include="Migrations\201511242017394_v8.Designer.cs">
-      <DependentUpon>201511242017394_v8.cs</DependentUpon>
+    <Compile Include="Migrations\201511301521506_integration1.cs" />
+    <Compile Include="Migrations\201511301521506_integration1.Designer.cs">
+      <DependentUpon>201511301521506_integration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Mapping\t_bookingMap.cs" />
     <Compile Include="Models\Mapping\t_clinicbookingMap.cs" />
     <Compile Include="Models\Mapping\t_clinicMap.cs" />
     <Compile Include="Models\Mapping\t_doctorpatientMap.cs" />
-    <Compile Include="Models\Mapping\t_favoriteMap.cs" />
     <Compile Include="Models\Mapping\t_flightMap.cs" />
     <Compile Include="Models\Mapping\t_flightmatchingMap.cs" />
     <Compile Include="Models\Mapping\t_hotelbookingMap.cs" />
@@ -125,11 +124,18 @@
     <Compile Include="Models\Mapping\t_userMap.cs" />
     <Compile Include="Models\medtravdbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\FavoriteRepository.cs" />
+    <Compile Include="Repositories\ClinicBookingRepository.cs" />
+    <Compile Include="Repositories\ClinicRepository.cs" />
+    <Compile Include="Repositories\DoctorPatientRepository.cs" />
     <Compile Include="Repositories\FlightMatchingRepository.cs" />
     <Compile Include="Repositories\FlightRepository.cs" />
+    <Compile Include="Repositories\HotelBookingRepository.cs" />
     <Compile Include="Repositories\HotelRepository.cs" />
+    <Compile Include="Repositories\MedicalRecordsRepository.cs" />
     <Compile Include="Repositories\QuestionRepository.cs" />
+    <Compile Include="Repositories\ServiceHotelRepository.cs" />
+    <Compile Include="Repositories\SurgeryBookingRepository.cs" />
+    <Compile Include="Repositories\SurgeryRepository.cs" />
     <Compile Include="Repositories\TestimonyRepository.cs" />
     <Compile Include="Repositories\TipRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -175,8 +181,8 @@
     <EmbeddedResource Include="Migrations\201511201404561_v7.resx">
       <DependentUpon>201511201404561_v7.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511242017394_v8.resx">
-      <DependentUpon>201511242017394_v8.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511301521506_integration1.resx">
+      <DependentUpon>201511301521506_integration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

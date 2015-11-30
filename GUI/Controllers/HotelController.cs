@@ -1,8 +1,11 @@
-﻿using Data.Infrastructure;
+﻿using Data;
+using Data.Infrastructure;
 using Data.Models;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,10 +31,45 @@ namespace GUI.Controllers
             return View(l);
         }
 
+        [HttpPost]
+        public ActionResult Index(string search)
+        {
+            var all = ause.getAllHotels();
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                all = ause.GetHotelsByResearch(search);
+            }
+
+            return View(all);
+        }
+
+
+        // GET: Hotel
+        public ActionResult IndexPatient()
+        {
+            var l = ause.getAllHotels();
+            return View(l);
+        }
+
+        [HttpPost]
+        public ActionResult IndexPatient(string search)
+        {
+            var all = ause.getAllHotels();
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                all = ause.GetHotelsByResearch(search);
+            }
+
+            return View(all);
+        }
+
         // GET: Hotel/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var hotel = ause.GetById(id);
+            return View(hotel);
         }
 
         // GET: Hotel/Create
@@ -42,18 +80,31 @@ namespace GUI.Controllers
 
         // POST: Hotel/Create
         [HttpPost]
-        public ActionResult Create(t_hotel a)
+        public ActionResult Create(t_hotel a, HttpPostedFileBase ImageId)
         {
+            if (ModelState.IsValid) {
+                if (ImageId != null)
+                {
+                    ImageId.SaveAs(HttpContext.Server.MapPath("~/Upload/")
+                                                          + ImageId.FileName);
+                    a.ImgName = ImageId.FileName;
+                    //
+                   
+                }
 
-            if (ModelState.IsValid)
-            {
-                ause.AddHotel(a);
+               ause.AddHotel(a);
+                //    var path = Path.Combine(Server.MapPath("~/Upload/"), ImageId.FileName);
+                //    ImageId.SaveAs(path);
+
+          
+
+
                 return RedirectToAction("Index");
             }
             else
             {
                 return View();
-            }
+           }
         }
 
         // GET: Hotel/Edit/5
@@ -61,29 +112,30 @@ namespace GUI.Controllers
         {
             t_hotel hotel = ause.GetById(id);
             return View(hotel);
+            
         }
 
         // POST: Hotel/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(t_hotel c)
         {
-            try
-            {
-                t_hotel hotel = ause.GetById(id);
-                ause.UpdateHotel(hotel);
-                //unitOfWork.Save();
-
-
+            //if (ModelState.IsValid)
+            //{
+            try {
+                ause.UpdateHotel(c);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            catch { return View(); }
+            //}
+            //else
+            //{
+            //    return View();
+            //}
+            
         }
 
         // GET: Hotel/Delete/5
-        public ActionResult Delete(bool? saveChangesError = false, int id = 0)
+        public ActionResult Delete(bool? saveChangesError, int id)
         {
             if (saveChangesError.GetValueOrDefault())
             {
@@ -96,19 +148,21 @@ namespace GUI.Controllers
 
         // POST: Hotel/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                t_hotel hotel = ause.GetById(id);
+                t_hotel hotel=ause.GetById(id);
                 ause.DeleteHotel(hotel);
-
-                return RedirectToAction("Index");
             }
-            catch
+            catch (DataException)
             {
-                return View();
+                return RedirectToAction("Delete",
+                   new System.Web.Routing.RouteValueDictionary {
+        { "id", id },
+        { "saveChangesError", true } });
             }
+            return RedirectToAction("Index");
         }
     }
 }

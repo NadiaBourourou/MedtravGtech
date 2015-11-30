@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    class UserRepository : RepositoryBase<t_user>, IUserRepository
+    public class UserRepository : RepositoryBase<t_user>, IUserRepository
     {
         public UserRepository(IDatabaseFactory dbFactory)
             : base(dbFactory)

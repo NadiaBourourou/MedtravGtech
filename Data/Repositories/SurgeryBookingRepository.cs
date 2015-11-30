@@ -9,15 +9,17 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class FavoriteRepository : RepositoryBase<t_favorite>, IFavoriteRepository
+ 
+    public class SurgeryBookingRepository : RepositoryBase<t_surgerypatient>, ISurgeryBookingRepository
     {
-        public FavoriteRepository(IDatabaseFactory dbFactory)
+        public SurgeryBookingRepository(IDatabaseFactory dbFactory)
             : base(dbFactory)
         {
 
         }
+
     }
-    public interface IFavoriteRepository : IRepository<t_favorite>
+    public interface ISurgeryBookingRepository : IRepository<t_surgerypatient>
     {
 
     }

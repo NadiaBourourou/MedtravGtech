@@ -39,6 +39,8 @@ namespace  Data.Infrastructure
 
 
 
+
+
         private IHotelRepository hotelRepository;
         public IHotelRepository HotelRepository
         {
@@ -49,6 +51,57 @@ namespace  Data.Infrastructure
         public IUserRepository UserRepository
         {
             get { return userRepository = new UserRepository(dbFactory); ; }
+        }
+
+        private IServiceHotelRepository serviceHotelRepository;
+        public IServiceHotelRepository ServiceHotelRepository
+        {
+            get { return serviceHotelRepository = new ServiceHotelRepository(dbFactory); ; }
+        }
+
+
+        private IHotelBookingRepository hotelBookingRepository;
+        public IHotelBookingRepository HotelBookingRepository
+        {
+            get { return hotelBookingRepository = new HotelBookingRepository(dbFactory); ; }
+        }
+
+        private IClinicBookingRepository clinicBookingRepository;
+        public IClinicBookingRepository ClinicBookingRepository
+        {
+            get { return clinicBookingRepository = new ClinicBookingRepository(dbFactory); ; }
+        }
+
+        private IClinicRepository clinicRepository;
+        public IClinicRepository ClinicRepository
+        {
+            get { return clinicRepository = new ClinicRepository(dbFactory); ; }
+        }
+
+
+
+        private ISurgeryRepository surgeryRepository;
+        public ISurgeryRepository SurgeryRepository
+        {
+            get { return surgeryRepository = new SurgeryRepository(dbFactory); ; }
+        }
+
+
+        private IDoctorPatientRepository doctorPatientRepository;
+        public IDoctorPatientRepository DoctorPatientRepository
+        {
+            get { return doctorPatientRepository = new DoctorPatientRepository(dbFactory); ; }
+        }
+
+        private ISurgeryBookingRepository surgeryBookingRepository;
+        public ISurgeryBookingRepository SurgeryBookingRepository
+        {
+            get { return surgeryBookingRepository = new SurgeryBookingRepository(dbFactory); ; }
+        }
+        private IMedicalRecordsRepository medicalRecordsRepository;
+        public IMedicalRecordsRepository MedicalRecordsRepository
+        {
+            get { return medicalRecordsRepository = new MedicalRecordsRepository(dbFactory); ; }
         }
 
 
@@ -76,11 +129,7 @@ namespace  Data.Infrastructure
             get { return questionRepository = new QuestionRepository(dbFactory); ; }
         }
 
-        private IFavoriteRepository favoriteRepository;
-        public IFavoriteRepository FavoriteRepository
-        {
-            get { return favoriteRepository = new FavoriteRepository(dbFactory); ; }
-        }
+       
 
         private ITipRepository tipRepository;
         public ITipRepository TipRepository

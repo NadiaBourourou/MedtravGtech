@@ -1,0 +1,50 @@
+﻿@model Data.Models.t_medicalrecords
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>t_medicalrecords</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.medicalRecordsId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.medicalRecordsId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fileAnalysis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fileAnalysis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filePatient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filePatient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patient_userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patient_userId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -22,9 +22,11 @@ namespace  Data.Interfaces
 
         ITestimonyRepository TestimonyRepository { get; }
         IQuestionRepository QuestionRepository { get; }
-        IFavoriteRepository FavoriteRepository { get; }
-
         ITipRepository TipRepository { get; }
+
+        IServiceHotelRepository ServiceHotelRepository { get; }
+        IHotelBookingRepository HotelBookingRepository { get; }
+        IClinicBookingRepository ClinicBookingRepository { get; }
 
 
     }

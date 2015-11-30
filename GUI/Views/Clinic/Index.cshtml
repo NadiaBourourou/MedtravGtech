@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Data.Models.t_clinic>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+<table>
+    <tr>
+        <td>
+            Search for a Clinic : @Html.TextBox("search")
+        </td>
+        <td>
+            <input type="submit" value="search" id="submit" />
+        </td>
+    </tr>
+</table>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.clinicId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.phoneNumber)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.priceSimple)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.priceSingle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.professionalism)
+        </th>*@
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.clinicId)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.phoneNumber)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.priceSimple)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.priceSingle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.professionalism)
+        </td>*@
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.clinicId }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

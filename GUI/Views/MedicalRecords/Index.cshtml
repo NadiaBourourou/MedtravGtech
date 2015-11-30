@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Data.Models.t_medicalrecords>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.medicalRecordsId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fileAnalysis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.filePatient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patient_userId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.medicalRecordsId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fileAnalysis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.filePatient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.patient_userId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.medicalRecordsId  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.medicalRecordsId  }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+            @Html.ActionLink("ShowFile", "ShowFile", new { id=item.medicalRecordsId  })
+        </td>
+    </tr>
+}
+
+</table>

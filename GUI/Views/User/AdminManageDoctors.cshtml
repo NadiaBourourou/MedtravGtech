@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Data.Models.t_user>
+
+@{
+    ViewBag.Title = "AdminManageDoctors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @if (Session["userId"] != null)
+    {
+
+        <h4>Hello  @Session["login"].ToString() </h4>
+    }
+</p>
+
+<h3>Manage Doctors</h3>
+
+<p>
+    @Html.ActionLink("Add new doctor", "AdminCreatesDoctor")
+</p>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+        <th>
+            @Html.Label("Specialty")
+        </th>
+ 
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.specialty)
+            </td>
+    
+            <td>
+               
+                @Html.ActionLink("See more", "AdminDisplaysDetailsDoctor", new { id = item.userId }) |
+                @Html.ActionLink("Edit", "AdminEditsDoctor", new {  id=item.userId }) 
+              
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+
+    @Html.ActionLink("Back to main menu", "AdminLoggedIn")
+</p>

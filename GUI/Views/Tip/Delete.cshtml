@@ -51,13 +51,13 @@
             @Html.DisplayFor(model => model.disliked)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.idPatientVoted)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.idPatientVoted)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.administrator_userId)
@@ -73,7 +73,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default" />
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

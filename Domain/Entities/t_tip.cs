@@ -9,11 +9,6 @@ namespace Data.Models
 {
     public partial class t_tip
     {
-        public t_tip()
-        {
-            this.favorites = new List<t_favorite>();
-        }
-
 
         [Display(Name = "Tip Id")]
         public int tipId { get; set; }
@@ -37,7 +32,6 @@ namespace Data.Models
         [Display(Name = "Administrator Id")]
         public Nullable<int> administrator_userId { get; set; }
         public virtual t_user t_user { get; set; }
-        public virtual ICollection<t_favorite> favorites { get; set; }
 
     }
 }
