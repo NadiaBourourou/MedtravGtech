@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(GUI.Startup))]
+[assembly: OwinStartup(typeof(GUI.Startup))]
 namespace GUI
 {
     public partial class Startup
@@ -9,6 +9,8 @@ namespace GUI
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+            app.MapSignalR();
         }
     }
 }

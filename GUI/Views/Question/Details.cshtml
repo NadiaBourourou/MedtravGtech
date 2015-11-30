@@ -1,71 +1,84 @@
 ﻿@model Data.Models.t_question
 
 @{
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>t_question</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.questionId)
-        </dt>
+<div style="margin-left:30px;font-family: raleway-regular, arial; letter-spacing: 1px;">
+    <h2>Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.questionId)
-        </dd>
+    <div>
+        <h4>t_question</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <div style="margin-bottom:20px;margin-left:20px;">
+                <dt style="font-weight:bold;">
+                    @Html.DisplayNameFor(model => model.questionId)
+                </dt><br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.date)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.questionId)
+                </dd>
+                </div>
+            <div style="margin-bottom:20px;margin-left:20px;">
+                <dt style="font-weight:bold;">
+                    @Html.DisplayNameFor(model => model.date)
+                </dt>
+                <br />
+                <dd>
+                    @Html.DisplayFor(model => model.date)
+                </dd>
+            </div>
+                    <div style="margin-bottom:20px;margin-left:20px;">
+                        <dt style="font-weight:bold;">
+                            @Html.DisplayNameFor(model => model.title)
+                        </dt><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.response)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.response)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.patient_userId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.patient_userId)
-        </dd>
-
-    </dl>
-</div>
-<p>
-
-    @{  if (Model.patient_userId == ViewBag.connectedUserId)
-        {
-            @Html.ActionLink("Edit", "Edit", new { id = Model.questionId })            <br /><br />
-        }  }
-
-    @Html.ActionLink("Back to List", "Index")
+                        <dd>
+                            @Html.DisplayFor(model => model.title)
+                        </dd>
+                        </div>
+            <div style="margin-bottom:20px;margin-left:20px;">
+                <dt style="font-weight:bold;">
+                    @Html.DisplayNameFor(model => model.description)
+                </dt>
+                <br />
+                <dd>
+                    @Html.DisplayFor(model => model.description)
+                </dd>
+            </div>
+            <div style="margin-bottom:20px;margin-left:20px;">
+                <dt style="font-weight:bold;">
+                    @Html.DisplayNameFor(model => model.response)
+                </dt>
+                <br />
+                <dd>
+                    @Html.DisplayFor(model => model.response)
+                </dd>
+            </div>
+            @*<div style="margin-bottom:20px;margin-left:20px;">
+                <dt style="font-weight:bold;">
+                    @Html.DisplayNameFor(model => model.patient_userId)
+                </dt>
+                <br />
+                <dd>
+                    @Html.DisplayFor(model => model.patient_userId)
+                </dd>
+            </div>*@
+</dl>
+    </div>
+    <p>
+        <span style="margin-left:20px">
+            @{  if (Model.patient_userId == ViewBag.connectedUserId)
+            {
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.questionId })            <br /><br />
+                }  }
+            </span>
+            <br /><br />
+            <span style="margin-left:20px">
+                @Html.ActionLink("Back to List", "Index")
+</span>
 </p>
+    </div>

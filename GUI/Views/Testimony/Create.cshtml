@@ -5,7 +5,7 @@
     ViewBag.Title = "Create";
 }
 
-<span style="font-family: raleway-regular, arial; letter-spacing: 1px;">
+<div style="font-family: raleway-regular, arial; letter-spacing: 1px;" >
     <h2 style="margin-left:20px;">Create</h2>
 
     <div style="margin-left:1150px;">
@@ -48,12 +48,14 @@
                 </div>
             </div>
 
+            <div style="margin-bottom:50px;">
 
-            <li>
-                @Html.Raw(Html.GenerateCaptcha())
-                @Html.ValidationMessage("recaptcha")
-            </li>
+               
+                    @Html.Raw(Html.GenerateCaptcha())
+                    @Html.ValidationMessage("recaptcha")
+                
 
+            </div>
 
 
 
@@ -64,7 +66,7 @@
             </div>
         </div>
     }
-</span>
+</div>
 
 
 @*@section Scripts {

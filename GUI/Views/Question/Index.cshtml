@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Data.Models.t_question>
 
 @{
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
     ViewBag.Title = "Index";
 }
 
@@ -9,162 +10,208 @@
 @using PagedList;
 
 <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
- 
-<h2>Questions</h2>
+<style>
+    .btn {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #f5a039;
+    padding: 8px 20px 10px 20px;
+    text-decoration: none;
+    }
+     .btn1 {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #93cc72;
+    padding: 8px 20px 10px 20px;
+    text-decoration: none;
+    }
 
-<br />
-<br />
-<center>
+    .btn:hover {
+    background: #93cc72;
+    text-decoration: none;
+    }
 
-    <video width="360" height="280" controls>
-        <source src="~/Video/video.mp4" type="video/mp4">
+</style>
+ <button class="btn" style="float:right;margin:50px;">
+     @Html.ActionLink("Chat Room", "Chat" )
+  
+ </button>
 
-        Your browser does not support the video tag.
-    </video>
-
-    <embed src="~/Video/questions.mp3" width="0" height="0" />
-</center>
-
-<br />
-<br />
+<div id="monTab">
+    <h2>Questions</h2>
 
 
 
-@using (Html.BeginForm("Index", "Question", FormMethod.Get))
-{
-    //the following are search options
-    <b> Search Option: </b>
+  
+
+
+
+    @using (Html.BeginForm("Index", "Question", FormMethod.Get))
+    {
+        //the following are search options
+        <b> Search Option: </b>
         @Html.RadioButton("optionChoisie", "Title", htmlAttributes: new { @checked = "isChecked" }) <text>Title</text>
         @Html.RadioButton("optionChoisie", "Description") <text> Description </text>
         @Html.TextBox("searchTextBox")
-        <input type="submit" name="submit" value="Search" />
-}
+        <input class="btn1" type="submit" name="submit" value="Search" />
+    }
 
-<br /><br /> <br />
+    <br /><br /> <br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 
 
     <br />
     <br />
 
     @if (Model.Count() == 0)
-    { <tr > <td colspan = "3" >  <center><b style="color:coral">Sorry, records not found </b></center></td>
-    </tr >
+    { <tr>
+        <td colspan="3">  <center><b style="color:coral">Sorry, records not found </b></center></td>
+    </tr>
     <br />
     <br />
     }
     else
     {
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.questionId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.response)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.patient_userId)
-        </th>
-        <th></th>
-    </tr>
+        <table border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.questionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.response)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.patient_userId)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.questionId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.response)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.patient_userId)
-        </td>
-        <td>
-            
-            @Html.ActionLink("Details", "Details", new { id = item.questionId }) 
-           
-           
-             @{  if (item.patient_userId == ViewBag.connectedUserId)
-                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.questionId })<br /><br />
-                    @Html.ActionLink("Delete", "Delete", new { id = item.questionId })<br /><br />
-                 }  }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.questionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.response)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.patient_userId)
+                    </td>
+                    <td>
+                        <div style="color:blue;   padding:40px;">
+                            @Html.ActionLink("Details", "Details", new { id = item.questionId })
 
-                 
-              
-            @if (ViewBag.connectedUserId == 5)
-            {  @Html.ActionLink("Answer", "Answer", new { id = item.questionId })
+                            <br /><br />
+                            @{  if (item.patient_userId == ViewBag.connectedUserId)
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.questionId })
+                            <br /><br />
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.questionId })<br /><br />
+                                }  }
 
 
-            }
-         </td>
-    </tr>
-                 }
 
-</table>
-
-                 }
-
-@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+                            @if (ViewBag.connectedUserId == 5)
+                            {  @Html.ActionLink("Answer", "Answer", new { id = item.questionId })
 
 
-<br />
-<br />
+                            }
+                            </div>
+</td>
+                </tr>
+                            }
+
+        </table>
+
+                            }
+    <div style="margin-left:550px;">
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+    </div>
+
+    <br />
+    <br />
+
+    <br />
+    
+    
+        What does medical tourism mean? Discover it in the video.
+    <center>
+        <video style="margin-right:100px;" width="360" height="280" controls>
+            <source src="~/Video/video.mp4" type="video/mp4">
+
+            Your browser does not support the video tag.
+        </video>
+
+        <embed src="~/Video/questions.mp3" width="0" height="0" />
+    </center>
+    <br />
+    <br />
+    <br />
 
 
-<div style="width:600px; margin-left:auto; margin-right:auto">
+    <div style="width:600px; margin-left:auto; margin-right:auto">
 
-    <p>Click the button to get our social network pages </p>
-    <input id="btnAjax" name="btnAjax" type="button" value="Social network pages" />
-    <div id="mylinks" ></div>
-</div>
-@section Scripts {
-<script>
-    $('#btnAjax').click(function () {
-        $.ajax({
-            url: '/Question/GetLinks',
-            contentType: 'application/html; charset=utf-8',
-            type: 'GET',
-            dataType: 'html'
+        <p>Click the button to get our social network pages </p>
+        <input class="btn" id="btnAjax" name="btnAjax" style="margin-top:30px;" type="button" value="Recommand us" />
+        <div id="mylinks"></div>
+    </div>
 
-        })
-        .success(function (result) {
-            $('#mylinks').html(result);
-        })
-        .error(function (xhr, status) {
-            alert(status);
-        })
-    });
-</script>
+    </div>
 
-<script src="https://apis.google.com/js/platform.js" async defer>
-        { lang: 'en-GB' }
-</script>
+ 
+        <script>
+            $('#btnAjax').click(function () {
+                $.ajax({
+                    url: '/Question/GetLinks',
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html'
 
-    }
+                })
+                .success(function (result) {
+                    $('#mylinks').html(result);
+                })
+                .error(function (xhr, status) {
+                    alert(status);
+                })
+            });
+        </script>
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            { lang: 'en-GB' }
+        </script>
+
+
 
 
